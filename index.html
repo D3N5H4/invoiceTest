@@ -147,7 +147,7 @@
             text-overflow: ellipsis;
         }
 
-        .total {
+        .total, .small, .price {
             text-align: right;
             font-family: 'Courier New', monospace;
             font-weight: 500;
@@ -2841,7 +2841,7 @@
                     <td class="client-name" title="${invoice.client_name}">${invoice.client_name}</td>
                     <td class="small">${formatCurrency(invoice.subtotal)}</td>
                     <td class="small">${calculateTaxPercentage(invoice.tax, invoice.subtotal)}</td>
-                    <td class="total">Bs <strong>${formatCurrency(invoice.total)}</strong></td>
+                    <td class="price">Bs <strong>${formatCurrency(invoice.total)}</strong></td>
                     <td class="actions">
                         <a href="${invoice.file}" class="btn btn-view">Ver</a>
                         <a href="${invoice.file}" download class="btn btn-download">Descargar</a>
