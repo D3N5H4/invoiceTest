@@ -2813,7 +2813,7 @@
 
         // Formatear números como moneda
         function formatCurrency(small) {
-            return `Bs ${parseFloat(small).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+            return 'Bs ' + `${parseFloat(small).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         }
 
         // Calcular porcentaje de impuesto
