@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000123</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800576472</div>
+      <div>Alameda Teresa Agustí 758 Piso 0 , Lleida, 08180</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000123</strong></div>
+      <div>Fecha: 2025-05-06</div>
+      <div>Método de pago: Contado</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Ana Benavides</div>
+    <div>NIT/CI: 906-20-0031</div>
+    <div>Urbanización de Alfonso Pujadas 41 Puerta 9 , Lleida, 12021</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td>Problemas hizo parte mayores realizar.</td><td class='right'>149,69</td><td class='right'>1.496,90</td></tr><tr><td>5</td><td>Militares aire europea dios josé aumento.</td><td class='right'>342,51</td><td class='right'>1.712,55</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">3.209,45</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (18%)</td>
+        <td class="right">577,70</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>3.787,15</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

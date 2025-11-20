@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000095</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800269677</div>
+      <div>Calle de África Gual 112, Alicante, 48322</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000095</strong></div>
+      <div>Fecha: 2025-08-28</div>
+      <div>Método de pago: Contado</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Teodoro Robledo Tirado</div>
+    <div>NIT/CI: 067-05-0681</div>
+    <div>Cuesta Sosimo Arias 5, Ciudad, 27564</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>4</td><td>Esto creación años poner miguel.</td><td class='right'>300,09</td><td class='right'>1.200,36</td></tr><tr><td>5</td><td>Siquiera pedro parecía.</td><td class='right'>222,21</td><td class='right'>1.111,05</td></tr><tr><td>10</td><td>Única estamos posibilidad constitución junio violencia.</td><td class='right'>354,27</td><td class='right'>3.542,70</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">5.854,11</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (12%)</td>
+        <td class="right">702,49</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>6.556,60</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

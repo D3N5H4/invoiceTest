@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000084</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800983393</div>
+      <div>Avenida de Aristides Cid 883 Piso 9 , Guipúzcoa, 51398</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000084</strong></div>
+      <div>Fecha: 2024-11-28</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Silvio Esteban Meléndez</div>
+    <div>NIT/CI: 167-07-4670</div>
+    <div>Callejón de Andrés Felipe Jove 59, Teruel, 04075</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Ya mitad su ver total estas.</td><td class='right'>329,08</td><td class='right'>329,08</td></tr><tr><td>1</td><td>Llegar dijo según congreso resultados.</td><td class='right'>82,14</td><td class='right'>82,14</td></tr><tr><td>3</td><td>Noche francia semanas cabo.</td><td class='right'>411,88</td><td class='right'>1.235,64</td></tr><tr><td>1</td><td>Fuentes manuel fútbol podía mil.</td><td class='right'>331,65</td><td class='right'>331,65</td></tr><tr><td>8</td><td>Muchas través habría futuro cámara embargo.</td><td class='right'>304,93</td><td class='right'>2.439,44</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">4.417,95</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (18%)</td>
+        <td class="right">795,23</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>5.213,18</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

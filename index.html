@@ -1,0 +1,2952 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas - Resumen</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4b6cb7, #182848);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .controls {
+            padding: 20px;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #4b6cb7;
+            box-shadow: 0 0 0 2px rgba(75, 108, 183, 0.2);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            font-weight: 500;
+        }
+
+        .stat-item {
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            padding: 0 20px 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        thead {
+            background-color: #4b6cb7;
+            color: white;
+        }
+
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        td {
+            padding: 12px;
+        }
+
+        .invoice-number {
+            font-weight: 600;
+            color: #4b6cb7;
+        }
+
+        .client-name {
+            max-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .small {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-view {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .btn-download {
+            background-color: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-view:hover {
+            background-color: #bbdefb;
+        }
+
+        .btn-download:hover {
+            background-color: #c8e6c9;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 10px;
+        }
+
+        .pagination button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background-color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .pagination button:hover {
+            background-color: #f0f4f8;
+        }
+
+        .pagination button.active {
+            background-color: #4b6cb7;
+            color: white;
+            border-color: #4b6cb7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stats {
+                justify-content: space-between;
+            }
+
+            th,
+            td {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Facturas</h1>
+            <p class="subtitle">Resumen de todas las facturas registradas</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <i>🔍</i>
+                <input type="text" id="searchInput" placeholder="Buscar por número de factura, cliente...">
+            </div>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span id="totalInvoices">250</span> facturas
+                </div>
+                <div class="stat-item">
+                    Total: <span id="totalsmall">Bs 1,234,567.89</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="invoicesTable">
+                <thead>
+                    <tr>
+                        <th>Nº Factura</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Subtotal</th>
+                        <th>Impuesto</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Las filas se generarán con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination" id="pagination">
+            <!-- La paginación se generará con JavaScript -->
+        </div>
+    
+        <footer>
+            <p>Sistema de Gestión de Facturas &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Datos de las facturas (primeras 10 para ejemplo)
+        const invoicesData = [
+            {
+                "invoice_number": "000001",
+                "date": "2025-09-08",
+                "client_name": "Sarita Sanz Querol",
+                "client_id": "035-43-2466",
+                "subtotal": 7959.74,
+                "tax": 0,
+                "total": 7959.74,
+                "file": "invoices_output\\invoice_000001.html"
+            },
+            {
+                "invoice_number": "000002",
+                "date": "2025-03-24",
+                "client_name": "María Mena Nuñez",
+                "client_id": "946-15-5086",
+                "subtotal": 1684.8600000000001,
+                "tax": 0,
+                "total": 1684.86,
+                "file": "invoices_output\\invoice_000002.html"
+            },
+            {
+                "invoice_number": "000003",
+                "date": "2025-08-04",
+                "client_name": "Juan Luis Llamas Gonzalo",
+                "client_id": "763-97-6496",
+                "subtotal": 1586.8200000000002,
+                "tax": 285.63,
+                "total": 1872.45,
+                "file": "invoices_output\\invoice_000003.html"
+            },
+            {
+                "invoice_number": "000004",
+                "date": "2024-12-15",
+                "client_name": "Anastasio de Estrada",
+                "client_id": "647-80-8278",
+                "subtotal": 1993.2399999999998,
+                "tax": 239.19,
+                "total": 2232.43,
+                "file": "invoices_output\\invoice_000004.html"
+            },
+            {
+                "invoice_number": "000005",
+                "date": "2025-08-25",
+                "client_name": "Tere Alexandra Fuertes Gordillo",
+                "client_id": "613-01-9065",
+                "subtotal": 4522.08,
+                "tax": 542.65,
+                "total": 5064.73,
+                "file": "invoices_output\\invoice_000005.html"
+            },
+            {
+                "invoice_number": "000006",
+                "date": "2025-02-10",
+                "client_name": "Jesús Mateo Carlos",
+                "client_id": "381-61-9358",
+                "subtotal": 6221.39,
+                "tax": 1119.85,
+                "total": 7341.24,
+                "file": "invoices_output\\invoice_000006.html"
+            },
+            {
+                "invoice_number": "000007",
+                "date": "2025-01-24",
+                "client_name": "Jafet Manso Berenguer",
+                "client_id": "774-26-9420",
+                "subtotal": 2174.9,
+                "tax": 0,
+                "total": 2174.9,
+                "file": "invoices_output\\invoice_000007.html"
+            },
+            {
+                "invoice_number": "000008",
+                "date": "2025-06-19",
+                "client_name": "Jacobo Alvarado",
+                "client_id": "619-63-2976",
+                "subtotal": 8722.59,
+                "tax": 1570.07,
+                "total": 10292.66,
+                "file": "invoices_output\\invoice_000008.html"
+            },
+            {
+                "invoice_number": "000009",
+                "date": "2024-11-23",
+                "client_name": "Caridad Noelia Iborra Donoso",
+                "client_id": "096-37-8765",
+                "subtotal": 1714,
+                "tax": 308.52,
+                "total": 2022.52,
+                "file": "invoices_output\\invoice_000009.html"
+            },
+            {
+                "invoice_number": "000010",
+                "date": "2025-02-01",
+                "client_name": "Matilde Arco Jordán",
+                "client_id": "053-40-3473",
+                "subtotal": 3100.33,
+                "tax": 558.06,
+                "total": 3658.39,
+                "file": "invoices_output\\invoice_000010.html"
+            },
+            {
+                "invoice_number": "000011",
+                "date": "2024-11-26",
+                "client_name": "Carlota Salvà Bou",
+                "client_id": "958-89-3741",
+                "subtotal": 3241.33,
+                "tax": 583.44,
+                "total": 3824.77,
+                "file": "invoices_output\\invoice_000011.html"
+            },
+            {
+                "invoice_number": "000012",
+                "date": "2025-05-29",
+                "client_name": "Flora Frutos Diéguez",
+                "client_id": "201-12-1773",
+                "subtotal": 2928.48,
+                "tax": 527.13,
+                "total": 3455.61,
+                "file": "invoices_output\\invoice_000012.html"
+            },
+            {
+                "invoice_number": "000013",
+                "date": "2024-12-14",
+                "client_name": "Nicolás Giner Vilaplana",
+                "client_id": "913-12-7156",
+                "subtotal": 7435.03,
+                "tax": 0,
+                "total": 7435.03,
+                "file": "invoices_output\\invoice_000013.html"
+            },
+            {
+                "invoice_number": "000014",
+                "date": "2025-09-29",
+                "client_name": "José Luis Jose Miguel Franch Jimenez",
+                "client_id": "248-58-0410",
+                "subtotal": 9149.29,
+                "tax": 1646.87,
+                "total": 10796.16,
+                "file": "invoices_output\\invoice_000014.html"
+            },
+            {
+                "invoice_number": "000015",
+                "date": "2025-06-26",
+                "client_name": "Marcelino Cerdán Soto",
+                "client_id": "269-35-5346",
+                "subtotal": 2339.04,
+                "tax": 280.68,
+                "total": 2619.72,
+                "file": "invoices_output\\invoice_000015.html"
+            },
+            {
+                "invoice_number": "000016",
+                "date": "2025-05-02",
+                "client_name": "Florinda Salcedo Cueto",
+                "client_id": "781-19-6819",
+                "subtotal": 3847.42,
+                "tax": 0,
+                "total": 3847.42,
+                "file": "invoices_output\\invoice_000016.html"
+            },
+            {
+                "invoice_number": "000017",
+                "date": "2025-10-14",
+                "client_name": "Octavia Izaguirre García",
+                "client_id": "059-47-2919",
+                "subtotal": 1469.54,
+                "tax": 264.52,
+                "total": 1734.06,
+                "file": "invoices_output\\invoice_000017.html"
+            },
+            {
+                "invoice_number": "000018",
+                "date": "2025-01-10",
+                "client_name": "Néstor Font Tapia",
+                "client_id": "338-78-4537",
+                "subtotal": 6963.78,
+                "tax": 0,
+                "total": 6963.78,
+                "file": "invoices_output\\invoice_000018.html"
+            },
+            {
+                "invoice_number": "000019",
+                "date": "2025-10-15",
+                "client_name": "Cipriano Landa Bellido",
+                "client_id": "730-88-5254",
+                "subtotal": 3587.09,
+                "tax": 430.45,
+                "total": 4017.54,
+                "file": "invoices_output\\invoice_000019.html"
+            },
+            {
+                "invoice_number": "000020",
+                "date": "2025-07-12",
+                "client_name": "Efraín Jose Antonio Fuente Ferrán",
+                "client_id": "513-43-3921",
+                "subtotal": 1978.2199999999998,
+                "tax": 0,
+                "total": 1978.22,
+                "file": "invoices_output\\invoice_000020.html"
+            },
+            {
+                "invoice_number": "000021",
+                "date": "2025-05-15",
+                "client_name": "Rubén René Jove Ruano",
+                "client_id": "934-18-1444",
+                "subtotal": 4568.37,
+                "tax": 822.31,
+                "total": 5390.68,
+                "file": "invoices_output\\invoice_000021.html"
+            },
+            {
+                "invoice_number": "000022",
+                "date": "2025-09-17",
+                "client_name": "Victor del Aragón",
+                "client_id": "719-03-4058",
+                "subtotal": 2962.91,
+                "tax": 533.32,
+                "total": 3496.23,
+                "file": "invoices_output\\invoice_000022.html"
+            },
+            {
+                "invoice_number": "000023",
+                "date": "2025-11-18",
+                "client_name": "Inmaculada Quintana",
+                "client_id": "058-65-9472",
+                "subtotal": 5827.71,
+                "tax": 0,
+                "total": 5827.71,
+                "file": "invoices_output\\invoice_000023.html"
+            },
+            {
+                "invoice_number": "000024",
+                "date": "2025-06-10",
+                "client_name": "Nazaret Esteve Bru",
+                "client_id": "504-66-0152",
+                "subtotal": 6461.32,
+                "tax": 775.36,
+                "total": 7236.68,
+                "file": "invoices_output\\invoice_000024.html"
+            },
+            {
+                "invoice_number": "000025",
+                "date": "2025-01-06",
+                "client_name": "Maxi Cabrero Estevez",
+                "client_id": "077-76-3055",
+                "subtotal": 390.74,
+                "tax": 70.33,
+                "total": 461.07,
+                "file": "invoices_output\\invoice_000025.html"
+            },
+            {
+                "invoice_number": "000026",
+                "date": "2025-02-13",
+                "client_name": "Bruno Vilar Torrent",
+                "client_id": "423-50-3524",
+                "subtotal": 1842.26,
+                "tax": 331.61,
+                "total": 2173.87,
+                "file": "invoices_output\\invoice_000026.html"
+            },
+            {
+                "invoice_number": "000027",
+                "date": "2025-04-20",
+                "client_name": "Amada Cintia Sotelo Casanovas",
+                "client_id": "262-28-2398",
+                "subtotal": 1963.44,
+                "tax": 0,
+                "total": 1963.44,
+                "file": "invoices_output\\invoice_000027.html"
+            },
+            {
+                "invoice_number": "000028",
+                "date": "2025-06-26",
+                "client_name": "Amor Arana Milla",
+                "client_id": "847-01-3946",
+                "subtotal": 5118.6,
+                "tax": 0,
+                "total": 5118.6,
+                "file": "invoices_output\\invoice_000028.html"
+            },
+            {
+                "invoice_number": "000029",
+                "date": "2024-11-24",
+                "client_name": "Verónica Torrens Martín",
+                "client_id": "883-91-1888",
+                "subtotal": 4577.51,
+                "tax": 549.3,
+                "total": 5126.81,
+                "file": "invoices_output\\invoice_000029.html"
+            },
+            {
+                "invoice_number": "000030",
+                "date": "2025-06-07",
+                "client_name": "Rico Vicente Portillo",
+                "client_id": "704-35-1290",
+                "subtotal": 6956.1900000000005,
+                "tax": 0,
+                "total": 6956.19,
+                "file": "invoices_output\\invoice_000030.html"
+            },
+            {
+                "invoice_number": "000031",
+                "date": "2025-06-12",
+                "client_name": "Priscila Brígida Francisco Navarro",
+                "client_id": "471-05-4554",
+                "subtotal": 4625.219999999999,
+                "tax": 0,
+                "total": 4625.22,
+                "file": "invoices_output\\invoice_000031.html"
+            },
+            {
+                "invoice_number": "000032",
+                "date": "2025-06-26",
+                "client_name": "Alfonso Tovar Fuente",
+                "client_id": "839-27-6502",
+                "subtotal": 6244.17,
+                "tax": 749.3,
+                "total": 6993.47,
+                "file": "invoices_output\\invoice_000032.html"
+            },
+            {
+                "invoice_number": "000033",
+                "date": "2025-08-09",
+                "client_name": "Pascuala Seco-Cadenas",
+                "client_id": "187-26-0861",
+                "subtotal": 2041.5,
+                "tax": 367.47,
+                "total": 2408.97,
+                "file": "invoices_output\\invoice_000033.html"
+            },
+            {
+                "invoice_number": "000034",
+                "date": "2025-07-20",
+                "client_name": "Ricardo Lorenzo",
+                "client_id": "112-50-3969",
+                "subtotal": 3657,
+                "tax": 0,
+                "total": 3657,
+                "file": "invoices_output\\invoice_000034.html"
+            },
+            {
+                "invoice_number": "000035",
+                "date": "2025-10-11",
+                "client_name": "Amaya Tejedor Perelló",
+                "client_id": "565-72-2982",
+                "subtotal": 4751.12,
+                "tax": 0,
+                "total": 4751.12,
+                "file": "invoices_output\\invoice_000035.html"
+            },
+            {
+                "invoice_number": "000036",
+                "date": "2025-01-17",
+                "client_name": "Ángel Gárate Calderón",
+                "client_id": "144-81-3906",
+                "subtotal": 2620.59,
+                "tax": 0,
+                "total": 2620.59,
+                "file": "invoices_output\\invoice_000036.html"
+            },
+            {
+                "invoice_number": "000037",
+                "date": "2024-12-04",
+                "client_name": "Edu Cruz Bonilla",
+                "client_id": "716-25-0383",
+                "subtotal": 1107.44,
+                "tax": 0,
+                "total": 1107.44,
+                "file": "invoices_output\\invoice_000037.html"
+            },
+            {
+                "invoice_number": "000038",
+                "date": "2025-03-14",
+                "client_name": "Flavio Plinio Mercader Canet",
+                "client_id": "606-75-7754",
+                "subtotal": 4126.21,
+                "tax": 0,
+                "total": 4126.21,
+                "file": "invoices_output\\invoice_000038.html"
+            },
+            {
+                "invoice_number": "000039",
+                "date": "2024-11-26",
+                "client_name": "Angelina Oliveras Sanchez",
+                "client_id": "391-73-1205",
+                "subtotal": 9369.64,
+                "tax": 1686.54,
+                "total": 11056.18,
+                "file": "invoices_output\\invoice_000039.html"
+            },
+            {
+                "invoice_number": "000040",
+                "date": "2025-08-11",
+                "client_name": "Toribio Bermejo Escobar",
+                "client_id": "196-62-3206",
+                "subtotal": 2794.57,
+                "tax": 0,
+                "total": 2794.57,
+                "file": "invoices_output\\invoice_000040.html"
+            },
+            {
+                "invoice_number": "000041",
+                "date": "2025-09-15",
+                "client_name": "Jose Ignacio de Doménech",
+                "client_id": "799-90-2126",
+                "subtotal": 3355.0699999999997,
+                "tax": 603.91,
+                "total": 3958.98,
+                "file": "invoices_output\\invoice_000041.html"
+            },
+            {
+                "invoice_number": "000042",
+                "date": "2025-03-24",
+                "client_name": "Emiliana Grau Garrido",
+                "client_id": "834-18-7189",
+                "subtotal": 1086.98,
+                "tax": 0,
+                "total": 1086.98,
+                "file": "invoices_output\\invoice_000042.html"
+            },
+            {
+                "invoice_number": "000043",
+                "date": "2025-05-02",
+                "client_name": "Glauco Nogués Tejera",
+                "client_id": "376-50-7704",
+                "subtotal": 2908.7099999999996,
+                "tax": 349.05,
+                "total": 3257.76,
+                "file": "invoices_output\\invoice_000043.html"
+            },
+            {
+                "invoice_number": "000044",
+                "date": "2025-10-29",
+                "client_name": "Amando Heras Navas",
+                "client_id": "259-85-4320",
+                "subtotal": 826.9300000000001,
+                "tax": 0,
+                "total": 826.93,
+                "file": "invoices_output\\invoice_000044.html"
+            },
+            {
+                "invoice_number": "000045",
+                "date": "2025-01-13",
+                "client_name": "Haroldo Porta Grande",
+                "client_id": "258-92-1017",
+                "subtotal": 7173.43,
+                "tax": 1291.22,
+                "total": 8464.65,
+                "file": "invoices_output\\invoice_000045.html"
+            },
+            {
+                "invoice_number": "000046",
+                "date": "2025-08-18",
+                "client_name": "Rosendo Emigdio Alegre Calvo",
+                "client_id": "537-98-1750",
+                "subtotal": 4613.139999999999,
+                "tax": 830.37,
+                "total": 5443.51,
+                "file": "invoices_output\\invoice_000046.html"
+            },
+            {
+                "invoice_number": "000047",
+                "date": "2025-07-21",
+                "client_name": "Mariano Buenaventura Ramón Rueda",
+                "client_id": "415-20-8358",
+                "subtotal": 1262.32,
+                "tax": 151.48,
+                "total": 1413.8,
+                "file": "invoices_output\\invoice_000047.html"
+            },
+            {
+                "invoice_number": "000048",
+                "date": "2024-11-29",
+                "client_name": "Baldomero Carvajal Ramón",
+                "client_id": "571-42-3101",
+                "subtotal": 716.05,
+                "tax": 85.93,
+                "total": 801.98,
+                "file": "invoices_output\\invoice_000048.html"
+            },
+            {
+                "invoice_number": "000049",
+                "date": "2025-04-19",
+                "client_name": "Ale Gala Arias Fernández",
+                "client_id": "793-24-0019",
+                "subtotal": 169.02,
+                "tax": 0,
+                "total": 169.02,
+                "file": "invoices_output\\invoice_000049.html"
+            },
+            {
+                "invoice_number": "000050",
+                "date": "2025-07-08",
+                "client_name": "María Dolores Plana Sevilla",
+                "client_id": "154-73-9259",
+                "subtotal": 6693.21,
+                "tax": 0,
+                "total": 6693.21,
+                "file": "invoices_output\\invoice_000050.html"
+            },
+            {
+                "invoice_number": "000051",
+                "date": "2024-11-21",
+                "client_name": "Dulce Nuñez Valero",
+                "client_id": "423-58-6466",
+                "subtotal": 1270.9,
+                "tax": 0,
+                "total": 1270.9,
+                "file": "invoices_output\\invoice_000051.html"
+            },
+            {
+                "invoice_number": "000052",
+                "date": "2025-10-13",
+                "client_name": "Paz Herminia Mariño Garcés",
+                "client_id": "948-20-0572",
+                "subtotal": 4747.21,
+                "tax": 569.67,
+                "total": 5316.88,
+                "file": "invoices_output\\invoice_000052.html"
+            },
+            {
+                "invoice_number": "000053",
+                "date": "2025-02-22",
+                "client_name": "Pánfilo del Calzada",
+                "client_id": "785-92-1553",
+                "subtotal": 4317.25,
+                "tax": 518.07,
+                "total": 4835.32,
+                "file": "invoices_output\\invoice_000053.html"
+            },
+            {
+                "invoice_number": "000054",
+                "date": "2025-05-30",
+                "client_name": "Ciríaco Palomino Trujillo",
+                "client_id": "359-25-5234",
+                "subtotal": 3832.79,
+                "tax": 459.93,
+                "total": 4292.72,
+                "file": "invoices_output\\invoice_000054.html"
+            },
+            {
+                "invoice_number": "000055",
+                "date": "2025-01-09",
+                "client_name": "Cecilia Roura Cámara",
+                "client_id": "076-72-1452",
+                "subtotal": 8405.130000000001,
+                "tax": 1008.62,
+                "total": 9413.75,
+                "file": "invoices_output\\invoice_000055.html"
+            },
+            {
+                "invoice_number": "000056",
+                "date": "2025-01-04",
+                "client_name": "Ibán Raya Lara",
+                "client_id": "798-04-5549",
+                "subtotal": 1382.61,
+                "tax": 248.87,
+                "total": 1631.48,
+                "file": "invoices_output\\invoice_000056.html"
+            },
+            {
+                "invoice_number": "000057",
+                "date": "2025-05-13",
+                "client_name": "Aristides del Palomares",
+                "client_id": "938-60-4698",
+                "subtotal": 846.81,
+                "tax": 152.43,
+                "total": 999.24,
+                "file": "invoices_output\\invoice_000057.html"
+            },
+            {
+                "invoice_number": "000058",
+                "date": "2025-01-04",
+                "client_name": "Valerio Acosta-Santamaría",
+                "client_id": "047-74-8274",
+                "subtotal": 4400.610000000001,
+                "tax": 528.07,
+                "total": 4928.68,
+                "file": "invoices_output\\invoice_000058.html"
+            },
+            {
+                "invoice_number": "000059",
+                "date": "2025-03-16",
+                "client_name": "Ruy Bernad Rius",
+                "client_id": "414-41-5532",
+                "subtotal": 3275.81,
+                "tax": 393.1,
+                "total": 3668.91,
+                "file": "invoices_output\\invoice_000059.html"
+            },
+            {
+                "invoice_number": "000060",
+                "date": "2024-12-14",
+                "client_name": "Nilda Oliveras",
+                "client_id": "065-18-3112",
+                "subtotal": 1736.95,
+                "tax": 0,
+                "total": 1736.95,
+                "file": "invoices_output\\invoice_000060.html"
+            },
+            {
+                "invoice_number": "000061",
+                "date": "2025-11-09",
+                "client_name": "Chelo de Álvaro",
+                "client_id": "450-09-5087",
+                "subtotal": 6219.68,
+                "tax": 1119.54,
+                "total": 7339.22,
+                "file": "invoices_output\\invoice_000061.html"
+            },
+            {
+                "invoice_number": "000062",
+                "date": "2025-07-06",
+                "client_name": "Prudencia Juliana Cañizares Pedro",
+                "client_id": "992-01-8660",
+                "subtotal": 6526.67,
+                "tax": 1174.8,
+                "total": 7701.47,
+                "file": "invoices_output\\invoice_000062.html"
+            },
+            {
+                "invoice_number": "000063",
+                "date": "2025-09-16",
+                "client_name": "Nando Bernat Tello",
+                "client_id": "220-39-9695",
+                "subtotal": 560.28,
+                "tax": 0,
+                "total": 560.28,
+                "file": "invoices_output\\invoice_000063.html"
+            },
+            {
+                "invoice_number": "000064",
+                "date": "2025-10-01",
+                "client_name": "Aurelio Pineda Cózar",
+                "client_id": "399-55-5929",
+                "subtotal": 1702.47,
+                "tax": 306.44,
+                "total": 2008.91,
+                "file": "invoices_output\\invoice_000064.html"
+            },
+            {
+                "invoice_number": "000065",
+                "date": "2025-06-28",
+                "client_name": "Guadalupe Pozuelo",
+                "client_id": "735-26-8409",
+                "subtotal": 6752.58,
+                "tax": 1215.46,
+                "total": 7968.04,
+                "file": "invoices_output\\invoice_000065.html"
+            },
+            {
+                "invoice_number": "000066",
+                "date": "2024-11-29",
+                "client_name": "Adelina Carbó-Avilés",
+                "client_id": "841-31-3474",
+                "subtotal": 2643.1900000000005,
+                "tax": 475.77,
+                "total": 3118.96,
+                "file": "invoices_output\\invoice_000066.html"
+            },
+            {
+                "invoice_number": "000067",
+                "date": "2025-11-14",
+                "client_name": "Petrona Montaña Pozo",
+                "client_id": "758-41-0397",
+                "subtotal": 4492.84,
+                "tax": 539.14,
+                "total": 5031.98,
+                "file": "invoices_output\\invoice_000067.html"
+            },
+            {
+                "invoice_number": "000068",
+                "date": "2025-03-06",
+                "client_name": "Milagros Angelina Agudo Quesada",
+                "client_id": "716-83-0959",
+                "subtotal": 4700.29,
+                "tax": 0,
+                "total": 4700.29,
+                "file": "invoices_output\\invoice_000068.html"
+            },
+            {
+                "invoice_number": "000069",
+                "date": "2025-06-05",
+                "client_name": "Eulalia Dalmau Valentín",
+                "client_id": "938-21-2031",
+                "subtotal": 5206.81,
+                "tax": 937.23,
+                "total": 6144.04,
+                "file": "invoices_output\\invoice_000069.html"
+            },
+            {
+                "invoice_number": "000070",
+                "date": "2025-03-19",
+                "client_name": "Luz Graciela Mena Trujillo",
+                "client_id": "624-23-5922",
+                "subtotal": 8416.11,
+                "tax": 0,
+                "total": 8416.11,
+                "file": "invoices_output\\invoice_000070.html"
+            },
+            {
+                "invoice_number": "000071",
+                "date": "2025-10-15",
+                "client_name": "Eusebia Dominguez Chaparro",
+                "client_id": "651-40-4866",
+                "subtotal": 2408.78,
+                "tax": 0,
+                "total": 2408.78,
+                "file": "invoices_output\\invoice_000071.html"
+            },
+            {
+                "invoice_number": "000072",
+                "date": "2025-06-25",
+                "client_name": "Ángel Toño Moll Prado",
+                "client_id": "680-07-3781",
+                "subtotal": 5039.39,
+                "tax": 604.73,
+                "total": 5644.12,
+                "file": "invoices_output\\invoice_000072.html"
+            },
+            {
+                "invoice_number": "000073",
+                "date": "2024-12-31",
+                "client_name": "Zoraida Cabrero Azorin",
+                "client_id": "996-33-5316",
+                "subtotal": 3643.25,
+                "tax": 0,
+                "total": 3643.25,
+                "file": "invoices_output\\invoice_000073.html"
+            },
+            {
+                "invoice_number": "000074",
+                "date": "2025-07-19",
+                "client_name": "Cruz Galán",
+                "client_id": "943-26-5729",
+                "subtotal": 3651.16,
+                "tax": 0,
+                "total": 3651.16,
+                "file": "invoices_output\\invoice_000074.html"
+            },
+            {
+                "invoice_number": "000075",
+                "date": "2025-05-28",
+                "client_name": "Saturnino Ribas Polo",
+                "client_id": "309-98-3487",
+                "subtotal": 3069.61,
+                "tax": 552.53,
+                "total": 3622.14,
+                "file": "invoices_output\\invoice_000075.html"
+            },
+            {
+                "invoice_number": "000076",
+                "date": "2025-09-27",
+                "client_name": "Pancho Aranda Feliu",
+                "client_id": "565-25-9896",
+                "subtotal": 1845.6799999999998,
+                "tax": 0,
+                "total": 1845.68,
+                "file": "invoices_output\\invoice_000076.html"
+            },
+            {
+                "invoice_number": "000077",
+                "date": "2025-01-10",
+                "client_name": "Viviana Ros Colom",
+                "client_id": "962-79-0824",
+                "subtotal": 5836.53,
+                "tax": 0,
+                "total": 5836.53,
+                "file": "invoices_output\\invoice_000077.html"
+            },
+            {
+                "invoice_number": "000078",
+                "date": "2025-01-10",
+                "client_name": "Efraín Amador Granados",
+                "client_id": "924-92-3457",
+                "subtotal": 5825.42,
+                "tax": 699.05,
+                "total": 6524.47,
+                "file": "invoices_output\\invoice_000078.html"
+            },
+            {
+                "invoice_number": "000079",
+                "date": "2025-04-06",
+                "client_name": "Carolina Simó-Salinas",
+                "client_id": "351-45-4948",
+                "subtotal": 3689.9900000000002,
+                "tax": 664.2,
+                "total": 4354.19,
+                "file": "invoices_output\\invoice_000079.html"
+            },
+            {
+                "invoice_number": "000080",
+                "date": "2024-11-29",
+                "client_name": "Consuelo Elías Pou",
+                "client_id": "625-45-6934",
+                "subtotal": 10411.18,
+                "tax": 0,
+                "total": 10411.18,
+                "file": "invoices_output\\invoice_000080.html"
+            },
+            {
+                "invoice_number": "000081",
+                "date": "2025-08-02",
+                "client_name": "Xiomara Roselló Adadia",
+                "client_id": "950-38-4409",
+                "subtotal": 6596.75,
+                "tax": 0,
+                "total": 6596.75,
+                "file": "invoices_output\\invoice_000081.html"
+            },
+            {
+                "invoice_number": "000082",
+                "date": "2025-03-31",
+                "client_name": "Manuel Fabián Anaya Lozano",
+                "client_id": "348-35-9203",
+                "subtotal": 1213.9499999999998,
+                "tax": 218.51,
+                "total": 1432.46,
+                "file": "invoices_output\\invoice_000082.html"
+            },
+            {
+                "invoice_number": "000083",
+                "date": "2025-08-27",
+                "client_name": "Albina Ramis Pina",
+                "client_id": "054-51-4492",
+                "subtotal": 1816.3,
+                "tax": 217.96,
+                "total": 2034.26,
+                "file": "invoices_output\\invoice_000083.html"
+            },
+            {
+                "invoice_number": "000084",
+                "date": "2024-11-28",
+                "client_name": "Silvio Esteban Meléndez",
+                "client_id": "167-07-4670",
+                "subtotal": 4417.950000000001,
+                "tax": 795.23,
+                "total": 5213.18,
+                "file": "invoices_output\\invoice_000084.html"
+            },
+            {
+                "invoice_number": "000085",
+                "date": "2025-06-05",
+                "client_name": "Amando Blasco Cuesta",
+                "client_id": "952-75-2338",
+                "subtotal": 5096.32,
+                "tax": 0,
+                "total": 5096.32,
+                "file": "invoices_output\\invoice_000085.html"
+            },
+            {
+                "invoice_number": "000086",
+                "date": "2025-08-02",
+                "client_name": "Esperanza Abad",
+                "client_id": "969-14-3432",
+                "subtotal": 1575.94,
+                "tax": 189.11,
+                "total": 1765.05,
+                "file": "invoices_output\\invoice_000086.html"
+            },
+            {
+                "invoice_number": "000087",
+                "date": "2024-12-20",
+                "client_name": "Rosalía Riera Vazquez",
+                "client_id": "945-02-2920",
+                "subtotal": 1533.52,
+                "tax": 184.02,
+                "total": 1717.54,
+                "file": "invoices_output\\invoice_000087.html"
+            },
+            {
+                "invoice_number": "000088",
+                "date": "2025-01-31",
+                "client_name": "Paz del Vaquero",
+                "client_id": "744-30-4632",
+                "subtotal": 7955.4400000000005,
+                "tax": 954.65,
+                "total": 8910.09,
+                "file": "invoices_output\\invoice_000088.html"
+            },
+            {
+                "invoice_number": "000089",
+                "date": "2025-03-15",
+                "client_name": "Estrella Porta Moraleda",
+                "client_id": "345-93-2851",
+                "subtotal": 8206.98,
+                "tax": 984.84,
+                "total": 9191.82,
+                "file": "invoices_output\\invoice_000089.html"
+            },
+            {
+                "invoice_number": "000090",
+                "date": "2025-06-03",
+                "client_name": "Lázaro Olivé Bonet",
+                "client_id": "870-88-0744",
+                "subtotal": 6610.72,
+                "tax": 1189.93,
+                "total": 7800.65,
+                "file": "invoices_output\\invoice_000090.html"
+            },
+            {
+                "invoice_number": "000091",
+                "date": "2025-09-20",
+                "client_name": "Eusebia Villanueva Mateo",
+                "client_id": "781-34-3978",
+                "subtotal": 5936.720000000001,
+                "tax": 0,
+                "total": 5936.72,
+                "file": "invoices_output\\invoice_000091.html"
+            },
+            {
+                "invoice_number": "000092",
+                "date": "2025-09-23",
+                "client_name": "Salomón Arnal Monreal",
+                "client_id": "972-93-9630",
+                "subtotal": 4199.34,
+                "tax": 0,
+                "total": 4199.34,
+                "file": "invoices_output\\invoice_000092.html"
+            },
+            {
+                "invoice_number": "000093",
+                "date": "2024-12-20",
+                "client_name": "Lilia Peña Blasco",
+                "client_id": "316-75-4523",
+                "subtotal": 11593.54,
+                "tax": 0,
+                "total": 11593.54,
+                "file": "invoices_output\\invoice_000093.html"
+            },
+            {
+                "invoice_number": "000094",
+                "date": "2025-06-06",
+                "client_name": "Leire Saavedra Agudo",
+                "client_id": "297-11-9456",
+                "subtotal": 8818.11,
+                "tax": 1587.26,
+                "total": 10405.37,
+                "file": "invoices_output\\invoice_000094.html"
+            },
+            {
+                "invoice_number": "000095",
+                "date": "2025-08-28",
+                "client_name": "Teodoro Robledo Tirado",
+                "client_id": "067-05-0681",
+                "subtotal": 5854.11,
+                "tax": 702.49,
+                "total": 6556.6,
+                "file": "invoices_output\\invoice_000095.html"
+            },
+            {
+                "invoice_number": "000096",
+                "date": "2025-08-09",
+                "client_name": "Sosimo Mora Vigil",
+                "client_id": "159-44-9906",
+                "subtotal": 1316.97,
+                "tax": 0,
+                "total": 1316.97,
+                "file": "invoices_output\\invoice_000096.html"
+            },
+            {
+                "invoice_number": "000097",
+                "date": "2025-10-18",
+                "client_name": "León Guardia Benavides",
+                "client_id": "651-40-8859",
+                "subtotal": 7363.94,
+                "tax": 0,
+                "total": 7363.94,
+                "file": "invoices_output\\invoice_000097.html"
+            },
+            {
+                "invoice_number": "000098",
+                "date": "2025-08-01",
+                "client_name": "Emilia Checa Blanca",
+                "client_id": "275-25-3017",
+                "subtotal": 3908.58,
+                "tax": 469.03,
+                "total": 4377.61,
+                "file": "invoices_output\\invoice_000098.html"
+            },
+            {
+                "invoice_number": "000099",
+                "date": "2025-01-11",
+                "client_name": "Fidel Soriano Valcárcel",
+                "client_id": "217-21-6797",
+                "subtotal": 3582.38,
+                "tax": 0,
+                "total": 3582.38,
+                "file": "invoices_output\\invoice_000099.html"
+            },
+            {
+                "invoice_number": "000100",
+                "date": "2025-05-11",
+                "client_name": "Perlita Guzman",
+                "client_id": "622-23-8079",
+                "subtotal": 5604.96,
+                "tax": 1008.89,
+                "total": 6613.85,
+                "file": "invoices_output\\invoice_000100.html"
+            },
+            {
+                "invoice_number": "000101",
+                "date": "2024-11-19",
+                "client_name": "Tomasa Castilla Castellanos",
+                "client_id": "707-23-8468",
+                "subtotal": 8402.48,
+                "tax": 1008.3,
+                "total": 9410.78,
+                "file": "invoices_output\\invoice_000101.html"
+            },
+            {
+                "invoice_number": "000102",
+                "date": "2025-04-01",
+                "client_name": "Ramiro Valentín Oller",
+                "client_id": "206-08-3577",
+                "subtotal": 3694.37,
+                "tax": 0,
+                "total": 3694.37,
+                "file": "invoices_output\\invoice_000102.html"
+            },
+            {
+                "invoice_number": "000103",
+                "date": "2024-11-19",
+                "client_name": "Severino Rico Pellicer",
+                "client_id": "161-31-7759",
+                "subtotal": 4088.5,
+                "tax": 735.93,
+                "total": 4824.43,
+                "file": "invoices_output\\invoice_000103.html"
+            },
+            {
+                "invoice_number": "000104",
+                "date": "2025-08-01",
+                "client_name": "Jessica Bermudez",
+                "client_id": "146-32-2919",
+                "subtotal": 3389.13,
+                "tax": 406.7,
+                "total": 3795.83,
+                "file": "invoices_output\\invoice_000104.html"
+            },
+            {
+                "invoice_number": "000105",
+                "date": "2025-01-15",
+                "client_name": "Fulgencio Guardiola Mosquera",
+                "client_id": "154-86-6712",
+                "subtotal": 3843.9300000000003,
+                "tax": 691.91,
+                "total": 4535.84,
+                "file": "invoices_output\\invoice_000105.html"
+            },
+            {
+                "invoice_number": "000106",
+                "date": "2025-08-19",
+                "client_name": "Florinda Baquero Heras",
+                "client_id": "880-18-6907",
+                "subtotal": 2528.48,
+                "tax": 0,
+                "total": 2528.48,
+                "file": "invoices_output\\invoice_000106.html"
+            },
+            {
+                "invoice_number": "000107",
+                "date": "2025-03-01",
+                "client_name": "Serafina de Merino",
+                "client_id": "967-25-0015",
+                "subtotal": 2664.32,
+                "tax": 479.58,
+                "total": 3143.9,
+                "file": "invoices_output\\invoice_000107.html"
+            },
+            {
+                "invoice_number": "000108",
+                "date": "2025-01-22",
+                "client_name": "María Pilar Dorita Santamaría Portero",
+                "client_id": "203-52-1604",
+                "subtotal": 1613.1,
+                "tax": 193.57,
+                "total": 1806.67,
+                "file": "invoices_output\\invoice_000108.html"
+            },
+            {
+                "invoice_number": "000109",
+                "date": "2025-02-21",
+                "client_name": "Dorita Angulo Aliaga",
+                "client_id": "000-88-6286",
+                "subtotal": 145.28,
+                "tax": 0,
+                "total": 145.28,
+                "file": "invoices_output\\invoice_000109.html"
+            },
+            {
+                "invoice_number": "000110",
+                "date": "2025-08-17",
+                "client_name": "Rosenda Lidia Córdoba Llabrés",
+                "client_id": "832-86-9577",
+                "subtotal": 7130.84,
+                "tax": 0,
+                "total": 7130.84,
+                "file": "invoices_output\\invoice_000110.html"
+            },
+            {
+                "invoice_number": "000111",
+                "date": "2025-09-10",
+                "client_name": "Lupe Vera Rubio",
+                "client_id": "010-19-4081",
+                "subtotal": 6454.26,
+                "tax": 774.51,
+                "total": 7228.77,
+                "file": "invoices_output\\invoice_000111.html"
+            },
+            {
+                "invoice_number": "000112",
+                "date": "2025-06-01",
+                "client_name": "Manolo Menéndez Caro",
+                "client_id": "887-05-6636",
+                "subtotal": 8420.23,
+                "tax": 0,
+                "total": 8420.23,
+                "file": "invoices_output\\invoice_000112.html"
+            },
+            {
+                "invoice_number": "000113",
+                "date": "2025-08-27",
+                "client_name": "Cornelio de Laguna",
+                "client_id": "839-63-9092",
+                "subtotal": 2752.08,
+                "tax": 330.25,
+                "total": 3082.33,
+                "file": "invoices_output\\invoice_000113.html"
+            },
+            {
+                "invoice_number": "000114",
+                "date": "2025-11-17",
+                "client_name": "Palmira Morillo-Núñez",
+                "client_id": "371-91-0202",
+                "subtotal": 3275.21,
+                "tax": 393.03,
+                "total": 3668.24,
+                "file": "invoices_output\\invoice_000114.html"
+            },
+            {
+                "invoice_number": "000115",
+                "date": "2025-10-18",
+                "client_name": "Yolanda de Andrés",
+                "client_id": "157-08-8587",
+                "subtotal": 7779.25,
+                "tax": 933.51,
+                "total": 8712.76,
+                "file": "invoices_output\\invoice_000115.html"
+            },
+            {
+                "invoice_number": "000116",
+                "date": "2025-07-05",
+                "client_name": "Begoña del Carranza",
+                "client_id": "077-79-1773",
+                "subtotal": 8653.599999999999,
+                "tax": 1038.43,
+                "total": 9692.03,
+                "file": "invoices_output\\invoice_000116.html"
+            },
+            {
+                "invoice_number": "000117",
+                "date": "2025-04-27",
+                "client_name": "Pancho Izquierdo Sotelo",
+                "client_id": "280-35-9112",
+                "subtotal": 843.8,
+                "tax": 0,
+                "total": 843.8,
+                "file": "invoices_output\\invoice_000117.html"
+            },
+            {
+                "invoice_number": "000118",
+                "date": "2024-12-30",
+                "client_name": "María Fernanda Amorós Valenciano",
+                "client_id": "915-56-6079",
+                "subtotal": 6131.2,
+                "tax": 1103.62,
+                "total": 7234.82,
+                "file": "invoices_output\\invoice_000118.html"
+            },
+            {
+                "invoice_number": "000119",
+                "date": "2025-04-13",
+                "client_name": "Mamen Camps",
+                "client_id": "631-11-3364",
+                "subtotal": 234.2,
+                "tax": 0,
+                "total": 234.2,
+                "file": "invoices_output\\invoice_000119.html"
+            },
+            {
+                "invoice_number": "000120",
+                "date": "2025-02-24",
+                "client_name": "Federico Llorens Cerezo",
+                "client_id": "254-94-5868",
+                "subtotal": 6001.0199999999995,
+                "tax": 1080.18,
+                "total": 7081.2,
+                "file": "invoices_output\\invoice_000120.html"
+            },
+            {
+                "invoice_number": "000121",
+                "date": "2025-10-07",
+                "client_name": "Jose Angel Efraín Pereira Espinosa",
+                "client_id": "327-50-9709",
+                "subtotal": 1494.96,
+                "tax": 0,
+                "total": 1494.96,
+                "file": "invoices_output\\invoice_000121.html"
+            },
+            {
+                "invoice_number": "000122",
+                "date": "2025-09-20",
+                "client_name": "Dalila Araujo Vélez",
+                "client_id": "927-77-9482",
+                "subtotal": 1704.26,
+                "tax": 0,
+                "total": 1704.26,
+                "file": "invoices_output\\invoice_000122.html"
+            },
+            {
+                "invoice_number": "000123",
+                "date": "2025-05-06",
+                "client_name": "Ana Benavides",
+                "client_id": "906-20-0031",
+                "subtotal": 3209.45,
+                "tax": 577.7,
+                "total": 3787.15,
+                "file": "invoices_output\\invoice_000123.html"
+            },
+            {
+                "invoice_number": "000124",
+                "date": "2025-10-02",
+                "client_name": "Ulises Nicolás Ayuso",
+                "client_id": "124-00-4296",
+                "subtotal": 3023.0299999999997,
+                "tax": 0,
+                "total": 3023.03,
+                "file": "invoices_output\\invoice_000124.html"
+            },
+            {
+                "invoice_number": "000125",
+                "date": "2024-12-13",
+                "client_name": "José Ángel Somoza Taboada",
+                "client_id": "076-47-1998",
+                "subtotal": 3041.15,
+                "tax": 364.94,
+                "total": 3406.09,
+                "file": "invoices_output\\invoice_000125.html"
+            },
+            {
+                "invoice_number": "000126",
+                "date": "2025-04-01",
+                "client_name": "Candelaria del Soto",
+                "client_id": "501-39-4019",
+                "subtotal": 675.84,
+                "tax": 121.65,
+                "total": 797.49,
+                "file": "invoices_output\\invoice_000126.html"
+            },
+            {
+                "invoice_number": "000127",
+                "date": "2025-11-08",
+                "client_name": "Urbano Tovar Noguera",
+                "client_id": "231-57-9672",
+                "subtotal": 4296.88,
+                "tax": 515.63,
+                "total": 4812.51,
+                "file": "invoices_output\\invoice_000127.html"
+            },
+            {
+                "invoice_number": "000128",
+                "date": "2025-06-14",
+                "client_name": "Sarita Dueñas Ordóñez",
+                "client_id": "420-88-6966",
+                "subtotal": 8335.23,
+                "tax": 1500.34,
+                "total": 9835.57,
+                "file": "invoices_output\\invoice_000128.html"
+            },
+            {
+                "invoice_number": "000129",
+                "date": "2025-03-31",
+                "client_name": "Noelia Emma Menendez Murcia",
+                "client_id": "370-84-4876",
+                "subtotal": 2075.68,
+                "tax": 373.62,
+                "total": 2449.3,
+                "file": "invoices_output\\invoice_000129.html"
+            },
+            {
+                "invoice_number": "000130",
+                "date": "2024-12-18",
+                "client_name": "Florencio del Rocamora",
+                "client_id": "320-20-1956",
+                "subtotal": 7373.72,
+                "tax": 1327.27,
+                "total": 8700.99,
+                "file": "invoices_output\\invoice_000130.html"
+            },
+            {
+                "invoice_number": "000131",
+                "date": "2025-04-24",
+                "client_name": "Gilberto Llorente",
+                "client_id": "294-74-6448",
+                "subtotal": 2878.92,
+                "tax": 345.47,
+                "total": 3224.39,
+                "file": "invoices_output\\invoice_000131.html"
+            },
+            {
+                "invoice_number": "000132",
+                "date": "2025-07-09",
+                "client_name": "Cipriano de Belmonte",
+                "client_id": "936-15-2199",
+                "subtotal": 3678.8500000000004,
+                "tax": 0,
+                "total": 3678.85,
+                "file": "invoices_output\\invoice_000132.html"
+            },
+            {
+                "invoice_number": "000133",
+                "date": "2025-03-06",
+                "client_name": "Cecilio Leoncio Solano Montesinos",
+                "client_id": "182-08-3169",
+                "subtotal": 2953.5,
+                "tax": 0,
+                "total": 2953.5,
+                "file": "invoices_output\\invoice_000133.html"
+            },
+            {
+                "invoice_number": "000134",
+                "date": "2025-03-29",
+                "client_name": "Poncio Reig Bustamante",
+                "client_id": "783-25-6480",
+                "subtotal": 4237.6,
+                "tax": 762.77,
+                "total": 5000.37,
+                "file": "invoices_output\\invoice_000134.html"
+            },
+            {
+                "invoice_number": "000135",
+                "date": "2025-10-15",
+                "client_name": "Olegario Sainz Marti",
+                "client_id": "224-49-3294",
+                "subtotal": 2505.56,
+                "tax": 0,
+                "total": 2505.56,
+                "file": "invoices_output\\invoice_000135.html"
+            },
+            {
+                "invoice_number": "000136",
+                "date": "2025-07-21",
+                "client_name": "Maximiliano Andrés Díaz",
+                "client_id": "130-99-3501",
+                "subtotal": 3412,
+                "tax": 409.44,
+                "total": 3821.44,
+                "file": "invoices_output\\invoice_000136.html"
+            },
+            {
+                "invoice_number": "000137",
+                "date": "2025-11-02",
+                "client_name": "Olimpia Valenciano Gonzalo",
+                "client_id": "380-99-6522",
+                "subtotal": 1080.99,
+                "tax": 0,
+                "total": 1080.99,
+                "file": "invoices_output\\invoice_000137.html"
+            },
+            {
+                "invoice_number": "000138",
+                "date": "2025-04-05",
+                "client_name": "Jacinta Valera Ayuso",
+                "client_id": "869-74-3500",
+                "subtotal": 1484.8799999999999,
+                "tax": 178.19,
+                "total": 1663.07,
+                "file": "invoices_output\\invoice_000138.html"
+            },
+            {
+                "invoice_number": "000139",
+                "date": "2025-01-02",
+                "client_name": "Martin Amor Diaz Pelayo",
+                "client_id": "104-51-1211",
+                "subtotal": 4258.59,
+                "tax": 0,
+                "total": 4258.59,
+                "file": "invoices_output\\invoice_000139.html"
+            },
+            {
+                "invoice_number": "000140",
+                "date": "2025-01-07",
+                "client_name": "León Macias Mendez",
+                "client_id": "737-95-3231",
+                "subtotal": 1875.52,
+                "tax": 0,
+                "total": 1875.52,
+                "file": "invoices_output\\invoice_000140.html"
+            },
+            {
+                "invoice_number": "000141",
+                "date": "2025-07-05",
+                "client_name": "Carmen Saavedra Fernandez",
+                "client_id": "657-03-2005",
+                "subtotal": 1556.04,
+                "tax": 280.09,
+                "total": 1836.13,
+                "file": "invoices_output\\invoice_000141.html"
+            },
+            {
+                "invoice_number": "000142",
+                "date": "2025-09-12",
+                "client_name": "Fidel Baquero Vigil",
+                "client_id": "508-33-6842",
+                "subtotal": 1879.97,
+                "tax": 0,
+                "total": 1879.97,
+                "file": "invoices_output\\invoice_000142.html"
+            },
+            {
+                "invoice_number": "000143",
+                "date": "2025-02-13",
+                "client_name": "Juan José del Lluch",
+                "client_id": "888-05-8944",
+                "subtotal": 4406.19,
+                "tax": 528.74,
+                "total": 4934.93,
+                "file": "invoices_output\\invoice_000143.html"
+            },
+            {
+                "invoice_number": "000144",
+                "date": "2025-01-31",
+                "client_name": "Renata Esteban-Iglesias",
+                "client_id": "624-51-4765",
+                "subtotal": 6130,
+                "tax": 1103.4,
+                "total": 7233.4,
+                "file": "invoices_output\\invoice_000144.html"
+            },
+            {
+                "invoice_number": "000145",
+                "date": "2024-12-26",
+                "client_name": "Felicidad Canals Velázquez",
+                "client_id": "642-98-9803",
+                "subtotal": 3828.45,
+                "tax": 0,
+                "total": 3828.45,
+                "file": "invoices_output\\invoice_000145.html"
+            },
+            {
+                "invoice_number": "000146",
+                "date": "2025-02-08",
+                "client_name": "Feliciano Jimenez Roca",
+                "client_id": "607-60-3837",
+                "subtotal": 7890.41,
+                "tax": 0,
+                "total": 7890.41,
+                "file": "invoices_output\\invoice_000146.html"
+            },
+            {
+                "invoice_number": "000147",
+                "date": "2025-10-23",
+                "client_name": "Griselda Narváez-Cadenas",
+                "client_id": "384-23-8073",
+                "subtotal": 8123.240000000001,
+                "tax": 974.79,
+                "total": 9098.03,
+                "file": "invoices_output\\invoice_000147.html"
+            },
+            {
+                "invoice_number": "000148",
+                "date": "2025-02-28",
+                "client_name": "Jordi Cortés Navarrete",
+                "client_id": "656-34-4423",
+                "subtotal": 5043.5,
+                "tax": 605.22,
+                "total": 5648.72,
+                "file": "invoices_output\\invoice_000148.html"
+            },
+            {
+                "invoice_number": "000149",
+                "date": "2025-02-05",
+                "client_name": "Paloma Florina Oller Figueroa",
+                "client_id": "102-98-9828",
+                "subtotal": 5811.47,
+                "tax": 0,
+                "total": 5811.47,
+                "file": "invoices_output\\invoice_000149.html"
+            },
+            {
+                "invoice_number": "000150",
+                "date": "2025-08-27",
+                "client_name": "Victoria Nieves Llano Cantero",
+                "client_id": "871-75-7775",
+                "subtotal": 452.52,
+                "tax": 0,
+                "total": 452.52,
+                "file": "invoices_output\\invoice_000150.html"
+            },
+            {
+                "invoice_number": "000151",
+                "date": "2025-10-05",
+                "client_name": "José Mari Gordillo Perera",
+                "client_id": "772-62-0901",
+                "subtotal": 9127.42,
+                "tax": 1642.94,
+                "total": 10770.36,
+                "file": "invoices_output\\invoice_000151.html"
+            },
+            {
+                "invoice_number": "000152",
+                "date": "2025-02-16",
+                "client_name": "Samuel Coronado",
+                "client_id": "255-38-4874",
+                "subtotal": 5157.45,
+                "tax": 928.34,
+                "total": 6085.79,
+                "file": "invoices_output\\invoice_000152.html"
+            },
+            {
+                "invoice_number": "000153",
+                "date": "2025-01-24",
+                "client_name": "Andrea Torres",
+                "client_id": "177-29-2620",
+                "subtotal": 4770.11,
+                "tax": 0,
+                "total": 4770.11,
+                "file": "invoices_output\\invoice_000153.html"
+            },
+            {
+                "invoice_number": "000154",
+                "date": "2024-12-20",
+                "client_name": "Coral Gual Adadia",
+                "client_id": "790-99-7558",
+                "subtotal": 2939.37,
+                "tax": 352.72,
+                "total": 3292.09,
+                "file": "invoices_output\\invoice_000154.html"
+            },
+            {
+                "invoice_number": "000155",
+                "date": "2024-12-24",
+                "client_name": "Asdrubal Pujadas Nogueira",
+                "client_id": "682-28-1124",
+                "subtotal": 2432.77,
+                "tax": 0,
+                "total": 2432.77,
+                "file": "invoices_output\\invoice_000155.html"
+            },
+            {
+                "invoice_number": "000156",
+                "date": "2025-04-29",
+                "client_name": "Casemiro Agustí",
+                "client_id": "306-35-0743",
+                "subtotal": 5534.0599999999995,
+                "tax": 0,
+                "total": 5534.06,
+                "file": "invoices_output\\invoice_000156.html"
+            },
+            {
+                "invoice_number": "000157",
+                "date": "2025-04-07",
+                "client_name": "Víctor Urrutia Canet",
+                "client_id": "873-32-7657",
+                "subtotal": 1388.73,
+                "tax": 0,
+                "total": 1388.73,
+                "file": "invoices_output\\invoice_000157.html"
+            },
+            {
+                "invoice_number": "000158",
+                "date": "2025-07-02",
+                "client_name": "Valero Puerta-Galvez",
+                "client_id": "420-36-8428",
+                "subtotal": 5261.35,
+                "tax": 631.36,
+                "total": 5892.71,
+                "file": "invoices_output\\invoice_000158.html"
+            },
+            {
+                "invoice_number": "000159",
+                "date": "2024-11-28",
+                "client_name": "Nicolasa Rocamora Benet",
+                "client_id": "948-27-3049",
+                "subtotal": 10601.28,
+                "tax": 0,
+                "total": 10601.28,
+                "file": "invoices_output\\invoice_000159.html"
+            },
+            {
+                "invoice_number": "000160",
+                "date": "2025-06-08",
+                "client_name": "Cipriano Juan Francisco Isern Echeverría",
+                "client_id": "718-37-9971",
+                "subtotal": 5742.93,
+                "tax": 1033.73,
+                "total": 6776.66,
+                "file": "invoices_output\\invoice_000160.html"
+            },
+            {
+                "invoice_number": "000161",
+                "date": "2025-05-04",
+                "client_name": "Macarena Vila Asensio",
+                "client_id": "712-32-9250",
+                "subtotal": 4767.81,
+                "tax": 0,
+                "total": 4767.81,
+                "file": "invoices_output\\invoice_000161.html"
+            },
+            {
+                "invoice_number": "000162",
+                "date": "2025-08-12",
+                "client_name": "Jerónimo Fernández",
+                "client_id": "550-15-7364",
+                "subtotal": 4545.2,
+                "tax": 0,
+                "total": 4545.2,
+                "file": "invoices_output\\invoice_000162.html"
+            },
+            {
+                "invoice_number": "000163",
+                "date": "2025-04-29",
+                "client_name": "Natanael Pi Arribas",
+                "client_id": "149-46-9512",
+                "subtotal": 3903.49,
+                "tax": 468.42,
+                "total": 4371.91,
+                "file": "invoices_output\\invoice_000163.html"
+            },
+            {
+                "invoice_number": "000164",
+                "date": "2024-12-31",
+                "client_name": "Julieta Azorin Duque",
+                "client_id": "256-35-2398",
+                "subtotal": 2550.8900000000003,
+                "tax": 459.16,
+                "total": 3010.05,
+                "file": "invoices_output\\invoice_000164.html"
+            },
+            {
+                "invoice_number": "000165",
+                "date": "2025-09-16",
+                "client_name": "Sonia Quero-Aragón",
+                "client_id": "224-49-8179",
+                "subtotal": 4866.25,
+                "tax": 0,
+                "total": 4866.25,
+                "file": "invoices_output\\invoice_000165.html"
+            },
+            {
+                "invoice_number": "000166",
+                "date": "2025-02-22",
+                "client_name": "América Salom Borrego",
+                "client_id": "719-58-4588",
+                "subtotal": 4673.8,
+                "tax": 0,
+                "total": 4673.8,
+                "file": "invoices_output\\invoice_000166.html"
+            },
+            {
+                "invoice_number": "000167",
+                "date": "2025-05-30",
+                "client_name": "Felicidad Hernando Pulido",
+                "client_id": "874-11-1713",
+                "subtotal": 2070.7,
+                "tax": 372.73,
+                "total": 2443.43,
+                "file": "invoices_output\\invoice_000167.html"
+            },
+            {
+                "invoice_number": "000168",
+                "date": "2025-07-03",
+                "client_name": "Ramiro Ávila Reyes",
+                "client_id": "826-35-1673",
+                "subtotal": 3678.63,
+                "tax": 0,
+                "total": 3678.63,
+                "file": "invoices_output\\invoice_000168.html"
+            },
+            {
+                "invoice_number": "000169",
+                "date": "2024-11-20",
+                "client_name": "Ceferino Benitez Manzano",
+                "client_id": "520-58-5372",
+                "subtotal": 1593.16,
+                "tax": 191.18,
+                "total": 1784.34,
+                "file": "invoices_output\\invoice_000169.html"
+            },
+            {
+                "invoice_number": "000170",
+                "date": "2025-01-22",
+                "client_name": "Manu Exposito Olivares",
+                "client_id": "844-89-2283",
+                "subtotal": 6429.74,
+                "tax": 1157.35,
+                "total": 7587.09,
+                "file": "invoices_output\\invoice_000170.html"
+            },
+            {
+                "invoice_number": "000171",
+                "date": "2025-06-18",
+                "client_name": "Rosalva Gálvez Hervia",
+                "client_id": "203-66-8334",
+                "subtotal": 4798.84,
+                "tax": 0,
+                "total": 4798.84,
+                "file": "invoices_output\\invoice_000171.html"
+            },
+            {
+                "invoice_number": "000172",
+                "date": "2025-02-04",
+                "client_name": "Adolfo Priego",
+                "client_id": "382-63-9747",
+                "subtotal": 11004.970000000001,
+                "tax": 0,
+                "total": 11004.97,
+                "file": "invoices_output\\invoice_000172.html"
+            },
+            {
+                "invoice_number": "000173",
+                "date": "2025-03-12",
+                "client_name": "Milagros Salamanca Solís",
+                "client_id": "448-83-6178",
+                "subtotal": 1687.8400000000001,
+                "tax": 0,
+                "total": 1687.84,
+                "file": "invoices_output\\invoice_000173.html"
+            },
+            {
+                "invoice_number": "000174",
+                "date": "2025-02-08",
+                "client_name": "Pepito Llamas Avilés",
+                "client_id": "789-66-2501",
+                "subtotal": 3507.44,
+                "tax": 631.34,
+                "total": 4138.78,
+                "file": "invoices_output\\invoice_000174.html"
+            },
+            {
+                "invoice_number": "000175",
+                "date": "2025-10-10",
+                "client_name": "Heraclio Carnero-Meléndez",
+                "client_id": "899-76-9626",
+                "subtotal": 2666.04,
+                "tax": 319.92,
+                "total": 2985.96,
+                "file": "invoices_output\\invoice_000175.html"
+            },
+            {
+                "invoice_number": "000176",
+                "date": "2025-01-06",
+                "client_name": "Juan Antonio Boada Arco",
+                "client_id": "945-12-8074",
+                "subtotal": 7234.259999999999,
+                "tax": 868.11,
+                "total": 8102.37,
+                "file": "invoices_output\\invoice_000176.html"
+            },
+            {
+                "invoice_number": "000177",
+                "date": "2025-09-30",
+                "client_name": "Dalila Cazorla Pagès",
+                "client_id": "556-14-6809",
+                "subtotal": 1953.7,
+                "tax": 351.67,
+                "total": 2305.37,
+                "file": "invoices_output\\invoice_000177.html"
+            },
+            {
+                "invoice_number": "000178",
+                "date": "2025-09-01",
+                "client_name": "Herminio Rosado Vidal",
+                "client_id": "188-00-5971",
+                "subtotal": 5784.92,
+                "tax": 1041.29,
+                "total": 6826.21,
+                "file": "invoices_output\\invoice_000178.html"
+            },
+            {
+                "invoice_number": "000179",
+                "date": "2025-09-20",
+                "client_name": "Eusebio Carrión Orozco",
+                "client_id": "335-37-7343",
+                "subtotal": 1061.28,
+                "tax": 191.03,
+                "total": 1252.31,
+                "file": "invoices_output\\invoice_000179.html"
+            },
+            {
+                "invoice_number": "000180",
+                "date": "2025-04-29",
+                "client_name": "Román Carbajo",
+                "client_id": "308-91-8848",
+                "subtotal": 6274.93,
+                "tax": 1129.49,
+                "total": 7404.42,
+                "file": "invoices_output\\invoice_000180.html"
+            },
+            {
+                "invoice_number": "000181",
+                "date": "2025-08-08",
+                "client_name": "Severo Rico Higueras Alvarez",
+                "client_id": "080-67-8848",
+                "subtotal": 3330.04,
+                "tax": 0,
+                "total": 3330.04,
+                "file": "invoices_output\\invoice_000181.html"
+            },
+            {
+                "invoice_number": "000182",
+                "date": "2025-08-17",
+                "client_name": "Bautista Sergio Izaguirre Botella",
+                "client_id": "395-46-9742",
+                "subtotal": 1614.4,
+                "tax": 290.59,
+                "total": 1904.99,
+                "file": "invoices_output\\invoice_000182.html"
+            },
+            {
+                "invoice_number": "000183",
+                "date": "2025-04-27",
+                "client_name": "Juan Rivera Matas",
+                "client_id": "978-38-6887",
+                "subtotal": 2666.0199999999995,
+                "tax": 0,
+                "total": 2666.02,
+                "file": "invoices_output\\invoice_000183.html"
+            },
+            {
+                "invoice_number": "000184",
+                "date": "2025-05-22",
+                "client_name": "Édgar del Roma",
+                "client_id": "150-56-2650",
+                "subtotal": 1625.19,
+                "tax": 0,
+                "total": 1625.19,
+                "file": "invoices_output\\invoice_000184.html"
+            },
+            {
+                "invoice_number": "000185",
+                "date": "2025-09-06",
+                "client_name": "Adriana Abella-Tenorio",
+                "client_id": "415-66-0604",
+                "subtotal": 1227.66,
+                "tax": 147.32,
+                "total": 1374.98,
+                "file": "invoices_output\\invoice_000185.html"
+            },
+            {
+                "invoice_number": "000186",
+                "date": "2025-05-27",
+                "client_name": "Lola Uría Sáez",
+                "client_id": "742-67-8736",
+                "subtotal": 407.81,
+                "tax": 73.41,
+                "total": 481.22,
+                "file": "invoices_output\\invoice_000186.html"
+            },
+            {
+                "invoice_number": "000187",
+                "date": "2025-04-03",
+                "client_name": "Heliodoro Cózar Carnero",
+                "client_id": "802-38-5927",
+                "subtotal": 2209.26,
+                "tax": 265.11,
+                "total": 2474.37,
+                "file": "invoices_output\\invoice_000187.html"
+            },
+            {
+                "invoice_number": "000188",
+                "date": "2024-11-24",
+                "client_name": "Margarita Narváez Navas",
+                "client_id": "567-82-5775",
+                "subtotal": 1327.88,
+                "tax": 0,
+                "total": 1327.88,
+                "file": "invoices_output\\invoice_000188.html"
+            },
+            {
+                "invoice_number": "000189",
+                "date": "2025-04-13",
+                "client_name": "Martin Bernad Segura",
+                "client_id": "764-95-0523",
+                "subtotal": 4876.88,
+                "tax": 0,
+                "total": 4876.88,
+                "file": "invoices_output\\invoice_000189.html"
+            },
+            {
+                "invoice_number": "000190",
+                "date": "2025-01-05",
+                "client_name": "Régulo Aroca Iborra",
+                "client_id": "329-83-5784",
+                "subtotal": 7203.03,
+                "tax": 0,
+                "total": 7203.03,
+                "file": "invoices_output\\invoice_000190.html"
+            },
+            {
+                "invoice_number": "000191",
+                "date": "2025-04-13",
+                "client_name": "Corona Bernal",
+                "client_id": "057-76-4343",
+                "subtotal": 5092.139999999999,
+                "tax": 0,
+                "total": 5092.14,
+                "file": "invoices_output\\invoice_000191.html"
+            },
+            {
+                "invoice_number": "000192",
+                "date": "2024-11-20",
+                "client_name": "Alba Belda",
+                "client_id": "861-39-0165",
+                "subtotal": 4740.7,
+                "tax": 568.88,
+                "total": 5309.58,
+                "file": "invoices_output\\invoice_000192.html"
+            },
+            {
+                "invoice_number": "000193",
+                "date": "2024-12-30",
+                "client_name": "Tito Donoso Olivé",
+                "client_id": "199-53-0764",
+                "subtotal": 7369.750000000001,
+                "tax": 0,
+                "total": 7369.75,
+                "file": "invoices_output\\invoice_000193.html"
+            },
+            {
+                "invoice_number": "000194",
+                "date": "2025-05-12",
+                "client_name": "Lucía Rosselló Nogueira",
+                "client_id": "413-29-6438",
+                "subtotal": 202.97,
+                "tax": 36.53,
+                "total": 239.5,
+                "file": "invoices_output\\invoice_000194.html"
+            },
+            {
+                "invoice_number": "000195",
+                "date": "2025-01-06",
+                "client_name": "Adela Vaquero",
+                "client_id": "592-81-7409",
+                "subtotal": 1563.96,
+                "tax": 187.68,
+                "total": 1751.64,
+                "file": "invoices_output\\invoice_000195.html"
+            },
+            {
+                "invoice_number": "000196",
+                "date": "2025-01-19",
+                "client_name": "Mónica Puerta Marin",
+                "client_id": "265-86-6471",
+                "subtotal": 1227.78,
+                "tax": 147.33,
+                "total": 1375.11,
+                "file": "invoices_output\\invoice_000196.html"
+            },
+            {
+                "invoice_number": "000197",
+                "date": "2025-01-29",
+                "client_name": "Borja Marciano Grande Cánovas",
+                "client_id": "757-07-5620",
+                "subtotal": 4371.71,
+                "tax": 524.61,
+                "total": 4896.32,
+                "file": "invoices_output\\invoice_000197.html"
+            },
+            {
+                "invoice_number": "000198",
+                "date": "2024-11-21",
+                "client_name": "Gabriela Miguel Mariscal",
+                "client_id": "417-95-1576",
+                "subtotal": 1689.42,
+                "tax": 0,
+                "total": 1689.42,
+                "file": "invoices_output\\invoice_000198.html"
+            },
+            {
+                "invoice_number": "000199",
+                "date": "2025-02-01",
+                "client_name": "Dominga Expósito-Santiago",
+                "client_id": "568-15-0321",
+                "subtotal": 755.97,
+                "tax": 0,
+                "total": 755.97,
+                "file": "invoices_output\\invoice_000199.html"
+            },
+            {
+                "invoice_number": "000200",
+                "date": "2025-08-05",
+                "client_name": "Maxi Felicidad Alba Falcón",
+                "client_id": "407-79-3545",
+                "subtotal": 2762.26,
+                "tax": 0,
+                "total": 2762.26,
+                "file": "invoices_output\\invoice_000200.html"
+            },
+            {
+                "invoice_number": "000201",
+                "date": "2025-10-12",
+                "client_name": "Mamen Naranjo Font",
+                "client_id": "225-72-3604",
+                "subtotal": 4932.76,
+                "tax": 0,
+                "total": 4932.76,
+                "file": "invoices_output\\invoice_000201.html"
+            },
+            {
+                "invoice_number": "000202",
+                "date": "2024-12-28",
+                "client_name": "Amaya Yaiza Niño Carbó",
+                "client_id": "197-39-7309",
+                "subtotal": 3587.67,
+                "tax": 430.52,
+                "total": 4018.19,
+                "file": "invoices_output\\invoice_000202.html"
+            },
+            {
+                "invoice_number": "000203",
+                "date": "2025-03-31",
+                "client_name": "Eugenia Esteban Vélez",
+                "client_id": "382-20-5296",
+                "subtotal": 4885.67,
+                "tax": 879.42,
+                "total": 5765.09,
+                "file": "invoices_output\\invoice_000203.html"
+            },
+            {
+                "invoice_number": "000204",
+                "date": "2025-01-16",
+                "client_name": "Flavio Pavón Cabrero",
+                "client_id": "286-84-8008",
+                "subtotal": 5814.39,
+                "tax": 1046.59,
+                "total": 6860.98,
+                "file": "invoices_output\\invoice_000204.html"
+            },
+            {
+                "invoice_number": "000205",
+                "date": "2025-05-29",
+                "client_name": "Albert Moles-Urrutia",
+                "client_id": "118-36-7559",
+                "subtotal": 3982.94,
+                "tax": 0,
+                "total": 3982.94,
+                "file": "invoices_output\\invoice_000205.html"
+            },
+            {
+                "invoice_number": "000206",
+                "date": "2025-07-12",
+                "client_name": "José Antonio del Alba",
+                "client_id": "775-27-2130",
+                "subtotal": 3981.9100000000003,
+                "tax": 0,
+                "total": 3981.91,
+                "file": "invoices_output\\invoice_000206.html"
+            },
+            {
+                "invoice_number": "000207",
+                "date": "2025-10-01",
+                "client_name": "Jordán Vilaplana-Gallart",
+                "client_id": "933-37-9456",
+                "subtotal": 1817.89,
+                "tax": 218.15,
+                "total": 2036.04,
+                "file": "invoices_output\\invoice_000207.html"
+            },
+            {
+                "invoice_number": "000208",
+                "date": "2025-07-18",
+                "client_name": "Haroldo Guerrero",
+                "client_id": "141-84-8012",
+                "subtotal": 2823.2200000000003,
+                "tax": 508.18,
+                "total": 3331.4,
+                "file": "invoices_output\\invoice_000208.html"
+            },
+            {
+                "invoice_number": "000209",
+                "date": "2025-11-04",
+                "client_name": "Adalberto Marcio Arroyo Azorin",
+                "client_id": "993-69-0721",
+                "subtotal": 6548.67,
+                "tax": 785.84,
+                "total": 7334.51,
+                "file": "invoices_output\\invoice_000209.html"
+            },
+            {
+                "invoice_number": "000210",
+                "date": "2025-05-17",
+                "client_name": "Maxi Ferrán-Diaz",
+                "client_id": "049-45-2973",
+                "subtotal": 972.3100000000001,
+                "tax": 116.68,
+                "total": 1088.99,
+                "file": "invoices_output\\invoice_000210.html"
+            },
+            {
+                "invoice_number": "000211",
+                "date": "2025-09-29",
+                "client_name": "Elisabet Leal",
+                "client_id": "374-34-2654",
+                "subtotal": 850.91,
+                "tax": 0,
+                "total": 850.91,
+                "file": "invoices_output\\invoice_000211.html"
+            },
+            {
+                "invoice_number": "000212",
+                "date": "2025-02-08",
+                "client_name": "Alicia Agustí Toledo",
+                "client_id": "496-31-9284",
+                "subtotal": 1598.4,
+                "tax": 287.71,
+                "total": 1886.11,
+                "file": "invoices_output\\invoice_000212.html"
+            },
+            {
+                "invoice_number": "000213",
+                "date": "2025-01-26",
+                "client_name": "Hipólito Carrillo Alfaro",
+                "client_id": "721-89-9665",
+                "subtotal": 7028.57,
+                "tax": 0,
+                "total": 7028.57,
+                "file": "invoices_output\\invoice_000213.html"
+            },
+            {
+                "invoice_number": "000214",
+                "date": "2024-12-12",
+                "client_name": "Melisa Lucena Valbuena",
+                "client_id": "993-55-4823",
+                "subtotal": 2569.42,
+                "tax": 0,
+                "total": 2569.42,
+                "file": "invoices_output\\invoice_000214.html"
+            },
+            {
+                "invoice_number": "000215",
+                "date": "2025-03-31",
+                "client_name": "Juan José Peiró",
+                "client_id": "590-37-6972",
+                "subtotal": 6191.200000000001,
+                "tax": 0,
+                "total": 6191.2,
+                "file": "invoices_output\\invoice_000215.html"
+            },
+            {
+                "invoice_number": "000216",
+                "date": "2025-02-18",
+                "client_name": "Eloísa Adela Tejera Torrens",
+                "client_id": "271-60-3656",
+                "subtotal": 5192.16,
+                "tax": 0,
+                "total": 5192.16,
+                "file": "invoices_output\\invoice_000216.html"
+            },
+            {
+                "invoice_number": "000217",
+                "date": "2025-09-10",
+                "client_name": "Bernardino Seve Campo Cárdenas",
+                "client_id": "486-98-4036",
+                "subtotal": 4057.79,
+                "tax": 486.93,
+                "total": 4544.72,
+                "file": "invoices_output\\invoice_000217.html"
+            },
+            {
+                "invoice_number": "000218",
+                "date": "2025-06-03",
+                "client_name": "Eligio Agustín Llobet Olivera",
+                "client_id": "496-98-7974",
+                "subtotal": 8101.7,
+                "tax": 0,
+                "total": 8101.7,
+                "file": "invoices_output\\invoice_000218.html"
+            },
+            {
+                "invoice_number": "000219",
+                "date": "2025-10-20",
+                "client_name": "Adoración Pedraza-Perez",
+                "client_id": "565-47-6255",
+                "subtotal": 10623.869999999999,
+                "tax": 1274.86,
+                "total": 11898.73,
+                "file": "invoices_output\\invoice_000219.html"
+            },
+            {
+                "invoice_number": "000220",
+                "date": "2024-12-06",
+                "client_name": "Plinio Montes",
+                "client_id": "366-77-7009",
+                "subtotal": 6850.42,
+                "tax": 0,
+                "total": 6850.42,
+                "file": "invoices_output\\invoice_000220.html"
+            },
+            {
+                "invoice_number": "000221",
+                "date": "2025-06-12",
+                "client_name": "Cleto del Rubio",
+                "client_id": "879-50-3923",
+                "subtotal": 1957.96,
+                "tax": 352.43,
+                "total": 2310.39,
+                "file": "invoices_output\\invoice_000221.html"
+            },
+            {
+                "invoice_number": "000222",
+                "date": "2025-04-09",
+                "client_name": "Cándido Barón Baena",
+                "client_id": "057-91-3175",
+                "subtotal": 801.56,
+                "tax": 0,
+                "total": 801.56,
+                "file": "invoices_output\\invoice_000222.html"
+            },
+            {
+                "invoice_number": "000223",
+                "date": "2025-03-12",
+                "client_name": "Eutimio Maldonado Casal",
+                "client_id": "865-03-1514",
+                "subtotal": 7549.15,
+                "tax": 1358.85,
+                "total": 8908,
+                "file": "invoices_output\\invoice_000223.html"
+            },
+            {
+                "invoice_number": "000224",
+                "date": "2025-03-18",
+                "client_name": "Marcelo Villanueva Crespo",
+                "client_id": "060-31-2385",
+                "subtotal": 5639.4800000000005,
+                "tax": 676.74,
+                "total": 6316.22,
+                "file": "invoices_output\\invoice_000224.html"
+            },
+            {
+                "invoice_number": "000225",
+                "date": "2025-04-03",
+                "client_name": "Iris Ferrero Monreal",
+                "client_id": "531-63-1240",
+                "subtotal": 9626.94,
+                "tax": 1732.85,
+                "total": 11359.79,
+                "file": "invoices_output\\invoice_000225.html"
+            },
+            {
+                "invoice_number": "000226",
+                "date": "2025-03-24",
+                "client_name": "Apolinar Melchor Perera Cerezo",
+                "client_id": "218-71-7409",
+                "subtotal": 2060.92,
+                "tax": 370.97,
+                "total": 2431.89,
+                "file": "invoices_output\\invoice_000226.html"
+            },
+            {
+                "invoice_number": "000227",
+                "date": "2025-08-12",
+                "client_name": "Marita Morell Castelló",
+                "client_id": "328-90-9577",
+                "subtotal": 9981.16,
+                "tax": 1197.74,
+                "total": 11178.9,
+                "file": "invoices_output\\invoice_000227.html"
+            },
+            {
+                "invoice_number": "000228",
+                "date": "2025-08-10",
+                "client_name": "Sergio Carrillo",
+                "client_id": "570-06-4503",
+                "subtotal": 5197.93,
+                "tax": 623.75,
+                "total": 5821.68,
+                "file": "invoices_output\\invoice_000228.html"
+            },
+            {
+                "invoice_number": "000229",
+                "date": "2024-12-03",
+                "client_name": "Marcos Lasa Carro",
+                "client_id": "910-11-2960",
+                "subtotal": 5336.46,
+                "tax": 640.38,
+                "total": 5976.84,
+                "file": "invoices_output\\invoice_000229.html"
+            },
+            {
+                "invoice_number": "000230",
+                "date": "2025-06-12",
+                "client_name": "Gonzalo Bárcena Jove",
+                "client_id": "110-55-4854",
+                "subtotal": 694.75,
+                "tax": 83.37,
+                "total": 778.12,
+                "file": "invoices_output\\invoice_000230.html"
+            },
+            {
+                "invoice_number": "000231",
+                "date": "2025-09-15",
+                "client_name": "Ainoa Rosselló Saldaña",
+                "client_id": "159-70-9321",
+                "subtotal": 5172.02,
+                "tax": 0,
+                "total": 5172.02,
+                "file": "invoices_output\\invoice_000231.html"
+            },
+            {
+                "invoice_number": "000232",
+                "date": "2024-12-01",
+                "client_name": "Joaquín Carballo-Cortes",
+                "client_id": "017-06-9649",
+                "subtotal": 8813.7,
+                "tax": 1057.64,
+                "total": 9871.34,
+                "file": "invoices_output\\invoice_000232.html"
+            },
+            {
+                "invoice_number": "000233",
+                "date": "2025-08-17",
+                "client_name": "Aitana Goicoechea Cerezo",
+                "client_id": "713-51-5173",
+                "subtotal": 3534.7700000000004,
+                "tax": 636.26,
+                "total": 4171.03,
+                "file": "invoices_output\\invoice_000233.html"
+            },
+            {
+                "invoice_number": "000234",
+                "date": "2024-12-22",
+                "client_name": "Reyes Romero Guillén",
+                "client_id": "644-34-5097",
+                "subtotal": 2876.9300000000003,
+                "tax": 517.85,
+                "total": 3394.78,
+                "file": "invoices_output\\invoice_000234.html"
+            },
+            {
+                "invoice_number": "000235",
+                "date": "2025-01-14",
+                "client_name": "Nilo Checa Cornejo",
+                "client_id": "235-39-3427",
+                "subtotal": 5535.84,
+                "tax": 664.3,
+                "total": 6200.14,
+                "file": "invoices_output\\invoice_000235.html"
+            },
+            {
+                "invoice_number": "000236",
+                "date": "2025-07-24",
+                "client_name": "Débora del Saura",
+                "client_id": "922-71-7649",
+                "subtotal": 5860.77,
+                "tax": 1054.94,
+                "total": 6915.71,
+                "file": "invoices_output\\invoice_000236.html"
+            },
+            {
+                "invoice_number": "000237",
+                "date": "2025-09-27",
+                "client_name": "Jose Luis Paulino Cuervo Núñez",
+                "client_id": "356-32-2426",
+                "subtotal": 5707.95,
+                "tax": 0,
+                "total": 5707.95,
+                "file": "invoices_output\\invoice_000237.html"
+            },
+            {
+                "invoice_number": "000238",
+                "date": "2025-03-03",
+                "client_name": "Dalila Blanes Plaza",
+                "client_id": "867-73-6119",
+                "subtotal": 8394.41,
+                "tax": 0,
+                "total": 8394.41,
+                "file": "invoices_output\\invoice_000238.html"
+            },
+            {
+                "invoice_number": "000239",
+                "date": "2024-12-01",
+                "client_name": "Rosa María Almeida Arrieta",
+                "client_id": "650-95-1791",
+                "subtotal": 10902.659999999998,
+                "tax": 1308.32,
+                "total": 12210.98,
+                "file": "invoices_output\\invoice_000239.html"
+            },
+            {
+                "invoice_number": "000240",
+                "date": "2025-04-30",
+                "client_name": "Vilma Morán Machado",
+                "client_id": "586-99-9246",
+                "subtotal": 3759.12,
+                "tax": 676.64,
+                "total": 4435.76,
+                "file": "invoices_output\\invoice_000240.html"
+            },
+            {
+                "invoice_number": "000241",
+                "date": "2025-07-05",
+                "client_name": "Anunciación Bartolomé Villegas",
+                "client_id": "092-06-7040",
+                "subtotal": 6152,
+                "tax": 0,
+                "total": 6152,
+                "file": "invoices_output\\invoice_000241.html"
+            },
+            {
+                "invoice_number": "000242",
+                "date": "2025-01-14",
+                "client_name": "Manu Losa",
+                "client_id": "061-49-3291",
+                "subtotal": 639.39,
+                "tax": 76.73,
+                "total": 716.12,
+                "file": "invoices_output\\invoice_000242.html"
+            },
+            {
+                "invoice_number": "000243",
+                "date": "2025-04-28",
+                "client_name": "René del Amador",
+                "client_id": "905-95-4157",
+                "subtotal": 113.84,
+                "tax": 20.49,
+                "total": 134.33,
+                "file": "invoices_output\\invoice_000243.html"
+            },
+            {
+                "invoice_number": "000244",
+                "date": "2025-03-29",
+                "client_name": "Aroa Pont Azcona",
+                "client_id": "781-28-6128",
+                "subtotal": 1341.81,
+                "tax": 161.02,
+                "total": 1502.83,
+                "file": "invoices_output\\invoice_000244.html"
+            },
+            {
+                "invoice_number": "000245",
+                "date": "2025-11-03",
+                "client_name": "María Jesús Prado",
+                "client_id": "920-12-6654",
+                "subtotal": 2146.3500000000004,
+                "tax": 386.34,
+                "total": 2532.69,
+                "file": "invoices_output\\invoice_000245.html"
+            },
+            {
+                "invoice_number": "000246",
+                "date": "2025-08-11",
+                "client_name": "José Mari Sainz Perea",
+                "client_id": "633-44-3759",
+                "subtotal": 2646.04,
+                "tax": 476.29,
+                "total": 3122.33,
+                "file": "invoices_output\\invoice_000246.html"
+            },
+            {
+                "invoice_number": "000247",
+                "date": "2025-01-15",
+                "client_name": "Raquel Fiol Morales",
+                "client_id": "580-55-6617",
+                "subtotal": 3086.89,
+                "tax": 555.64,
+                "total": 3642.53,
+                "file": "invoices_output\\invoice_000247.html"
+            },
+            {
+                "invoice_number": "000248",
+                "date": "2025-08-26",
+                "client_name": "Natanael Salgado Briones",
+                "client_id": "431-64-5873",
+                "subtotal": 888.57,
+                "tax": 159.94,
+                "total": 1048.51,
+                "file": "invoices_output\\invoice_000248.html"
+            },
+            {
+                "invoice_number": "000249",
+                "date": "2025-03-22",
+                "client_name": "Maura Pera-Pablo",
+                "client_id": "063-78-4728",
+                "subtotal": 1383.0700000000002,
+                "tax": 0,
+                "total": 1383.07,
+                "file": "invoices_output\\invoice_000249.html"
+            },
+            {
+                "invoice_number": "000250",
+                "date": "2025-03-02",
+                "client_name": "Felicia del Mateos",
+                "client_id": "089-27-2017",
+                "subtotal": 4533.049999999999,
+                "tax": 815.95,
+                "total": 5349,
+                "file": "invoices_output\\invoice_000250.html"
+            }
+        ];
+
+        // Variables para paginación
+        let currentPage = 1;
+        const rowsPerPage = 50;
+        let filteredData = [...invoicesData];
+
+        // Formatear números como moneda
+        function formatCurrency(small) {
+            return `Bs ${parseFloat(small).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        // Calcular porcentaje de impuesto
+        function calculateTaxPercentage(tax, subtotal) {
+            if (parseFloat(subtotal) === 0) return "0.0 %";
+            const percentage = (parseFloat(tax) / parseFloat(subtotal)) * 100;
+            return `${percentage.toFixed(1)} %`;
+        }
+
+        // Generar filas de la tabla
+        function generateTableRows(data) {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = '';
+
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const endIndex = startIndex + rowsPerPage;
+            const pageData = data.slice(startIndex, endIndex);
+
+            pageData.forEach(invoice => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td class="invoice-number">${invoice.invoice_number}</td>
+                    <td>${invoice.date}</td>
+                    <td class="client-name" title="${invoice.client_name}">${invoice.client_name}</td>
+                    <td class="small">${formatCurrency(invoice.subtotal)}</td>
+                    <td class="small">${calculateTaxPercentage(invoice.tax, invoice.subtotal)}</td>
+                    <td class="small"><strong>${formatCurrency(invoice.total)}</strong></td>
+                    <td class="actions">
+                        <a href="${invoice.file}" class="btn btn-view">Ver</a>
+                        <a href="${invoice.file}" download class="btn btn-download">Descargar</a>
+                    </td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+
+            // Actualizar estadísticas
+            updateStats(data);
+        }
+
+        // Actualizar estadísticas
+        function updateStats(data) {
+            document.getElementById('totalInvoices').textContent = data.length;
+
+            const totalsmall = data.reduce((sum, invoice) => {
+                return sum + parseFloat(invoice.total);
+            }, 0);
+
+            document.getElementById('totalsmall').textContent = formatCurrency(totalsmall);
+        }
+
+        // Generar paginación
+        function generatePagination(data) {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            const totalPages = Math.ceil(data.length / rowsPerPage);
+
+            // Botón anterior
+            const prevButton = document.createElement('button');
+            prevButton.innerHTML = '&laquo; Anterior';
+            prevButton.disabled = currentPage === 1;
+            prevButton.addEventListener('click', () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    generateTableRows(data);
+                    generatePagination(data);
+                }
+            });
+            pagination.appendChild(prevButton);
+
+            // Números de página
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.classList.toggle('active', i === currentPage);
+
+                pageButton.addEventListener('click', () => {
+                    currentPage = i;
+                    generateTableRows(data);
+                    generatePagination(data);
+                });
+
+                pagination.appendChild(pageButton);
+            }
+
+            // Botón siguiente
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = 'Siguiente &raquo;';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.addEventListener('click', () => {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    generateTableRows(data);
+                    generatePagination(data);
+                }
+            });
+            pagination.appendChild(nextButton);
+        }
+
+        // Función de búsqueda
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase();
+
+                filteredData = invoicesData.filter(invoice =>
+                    invoice.invoice_number.toLowerCase().includes(searchTerm) ||
+                    invoice.client_name.toLowerCase().includes(searchTerm) ||
+                    invoice.date.includes(searchTerm)
+                );
+
+                currentPage = 1;
+                generateTableRows(filteredData);
+                generatePagination(filteredData);
+            });
+        }
+
+        // Inicializar la página
+        function init() {
+            generateTableRows(filteredData);
+            generatePagination(filteredData);
+            setupSearch();
+        }
+
+        // Ejecutar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+
+</html>

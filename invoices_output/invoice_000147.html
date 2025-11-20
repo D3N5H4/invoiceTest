@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000147</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800375629</div>
+      <div>Paseo Pili Morillo 23 Puerta 2 , Madrid, 11932</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000147</strong></div>
+      <div>Fecha: 2025-10-23</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Griselda Narváez-Cadenas</div>
+    <div>NIT/CI: 384-23-8073</div>
+    <div>Plaza Nazaret Bermúdez 508 Puerta 6 , Pontevedra, 20508</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>6</td><td>Bueno largo contenido cuando final s.</td><td class='right'>57,02</td><td class='right'>342,12</td></tr><tr><td>8</td><td>Modelo podía gobierno s ocasiones.</td><td class='right'>380,97</td><td class='right'>3.047,76</td></tr><tr><td>8</td><td>Naturaleza tarde psoe tipos da.</td><td class='right'>474,85</td><td class='right'>3.798,80</td></tr><tr><td>4</td><td>Presente sería realizar u.</td><td class='right'>139,93</td><td class='right'>559,72</td></tr><tr><td>4</td><td>Gobierno efecto paso aumento.</td><td class='right'>93,71</td><td class='right'>374,84</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">8.123,24</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (12%)</td>
+        <td class="right">974,79</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>9.098,03</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000189</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800973401</div>
+      <div>Urbanización de Visitación Prats 51 Apt. 51 , Valladolid, 25112</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000189</strong></div>
+      <div>Fecha: 2025-04-13</div>
+      <div>Método de pago: Crédito</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Martin Bernad Segura</div>
+    <div>NIT/CI: 764-95-0523</div>
+    <div>Cuesta de Jovita Dalmau 30 Puerta 9 , Girona, 17487</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>5</td><td>Entonces pueda estoy.</td><td class='right'>450,75</td><td class='right'>2.253,75</td></tr><tr><td>10</td><td>Nada s en países.</td><td class='right'>194,12</td><td class='right'>1.941,20</td></tr><tr><td>9</td><td>Partes les dejar servicio.</td><td class='right'>75,77</td><td class='right'>681,93</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">4.876,88</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (0%)</td>
+        <td class="right">0,00</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>4.876,88</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

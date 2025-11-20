@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000249</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800422058</div>
+      <div>Cañada de Loreto Vázquez 191 Piso 9 , Álava, 13752</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000249</strong></div>
+      <div>Fecha: 2025-03-22</div>
+      <div>Método de pago: Crédito</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Maura Pera-Pablo</div>
+    <div>NIT/CI: 063-78-4728</div>
+    <div>Paseo Darío Rovira 3 Piso 6 , Huelva, 11360</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>3</td><td>Gracias ii torno nuevo.</td><td class='right'>200,26</td><td class='right'>600,78</td></tr><tr><td>5</td><td>Efecto zonas dio enfermedad.</td><td class='right'>38,07</td><td class='right'>190,35</td></tr><tr><td>2</td><td>Puesto semanas hacia medidas.</td><td class='right'>295,97</td><td class='right'>591,94</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">1.383,07</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (0%)</td>
+        <td class="right">0,00</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>1.383,07</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

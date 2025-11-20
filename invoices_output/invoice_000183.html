@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000183</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800942398</div>
+      <div>Plaza Severiano Leon 86 Puerta 9 , Segovia, 31069</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000183</strong></div>
+      <div>Fecha: 2025-04-27</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Juan Rivera Matas</div>
+    <div>NIT/CI: 978-38-6887</div>
+    <div>Plaza Chita Cortina 31 Puerta 3 , Zamora, 12381</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>8</td><td>Objeto tierra cuales.</td><td class='right'>43,66</td><td class='right'>349,28</td></tr><tr><td>2</td><td>Semanas américa hablar niveles.</td><td class='right'>203,20</td><td class='right'>406,40</td></tr><tr><td>2</td><td>Lejos todas político alrededor has generales.</td><td class='right'>245,08</td><td class='right'>490,16</td></tr><tr><td>1</td><td>Segunda estuvo cuya va número elementos.</td><td class='right'>270,31</td><td class='right'>270,31</td></tr><tr><td>3</td><td>Cambios plazo hacen año cambios cámara.</td><td class='right'>383,29</td><td class='right'>1.149,87</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">2.666,02</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (0%)</td>
+        <td class="right">0,00</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>2.666,02</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

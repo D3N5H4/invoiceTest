@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000077</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800995228</div>
+      <div>Rambla Poncio Méndez 9, Baleares, 03479</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000077</strong></div>
+      <div>Fecha: 2025-01-10</div>
+      <div>Método de pago: Crédito</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Viviana Ros Colom</div>
+    <div>NIT/CI: 962-79-0824</div>
+    <div>Glorieta Esperanza Corbacho 25 Puerta 2 , Zaragoza, 47978</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>6</td><td>Cosas grupos necesidad.</td><td class='right'>302,90</td><td class='right'>1.817,40</td></tr><tr><td>6</td><td>Llama e teatro.</td><td class='right'>168,35</td><td class='right'>1.010,10</td></tr><tr><td>3</td><td>Proyecto izquierda nada.</td><td class='right'>126,81</td><td class='right'>380,43</td></tr><tr><td>10</td><td>Trata orden miembros tiempo nivel.</td><td class='right'>262,86</td><td class='right'>2.628,60</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">5.836,53</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (0%)</td>
+        <td class="right">0,00</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>5.836,53</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

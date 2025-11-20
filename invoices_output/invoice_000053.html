@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000053</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800646995</div>
+      <div>Vial Eva María Vives 1, Ávila, 38524</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000053</strong></div>
+      <div>Fecha: 2025-02-22</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Pánfilo del Calzada</div>
+    <div>NIT/CI: 785-92-1553</div>
+    <div>Avenida Leocadio Zabala 66 Piso 7 , Albacete, 26814</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>4</td><td>Nosotros adelante entre comunicación pedro fuerte.</td><td class='right'>316,52</td><td class='right'>1.266,08</td></tr><tr><td>6</td><td>Imágenes fueron b b suerte podría.</td><td class='right'>454,38</td><td class='right'>2.726,28</td></tr><tr><td>1</td><td>Teoría algunas problema.</td><td class='right'>324,89</td><td class='right'>324,89</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">4.317,25</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (12%)</td>
+        <td class="right">518,07</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>4.835,32</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+invoice_number,date,client_name,client_id,subtotal,tax,total,file
+000001,2025-09-08,Sarita Sanz Querol,035-43-2466,7959.74,0.0,7959.74,invoices_output\invoice_000001.html
+000002,2025-03-24,María Mena Nuñez,946-15-5086,1684.8600000000001,0.0,1684.86,invoices_output\invoice_000002.html
+000003,2025-08-04,Juan Luis Llamas Gonzalo,763-97-6496,1586.8200000000002,285.63,1872.45,invoices_output\invoice_000003.html
+000004,2024-12-15,Anastasio de Estrada,647-80-8278,1993.2399999999998,239.19,2232.43,invoices_output\invoice_000004.html
+000005,2025-08-25,Tere Alexandra Fuertes Gordillo,613-01-9065,4522.08,542.65,5064.73,invoices_output\invoice_000005.html
+000006,2025-02-10,Jesús Mateo Carlos,381-61-9358,6221.39,1119.85,7341.24,invoices_output\invoice_000006.html
+000007,2025-01-24,Jafet Manso Berenguer,774-26-9420,2174.9,0.0,2174.9,invoices_output\invoice_000007.html
+000008,2025-06-19,Jacobo Alvarado,619-63-2976,8722.59,1570.07,10292.66,invoices_output\invoice_000008.html
+000009,2024-11-23,Caridad Noelia Iborra Donoso,096-37-8765,1714.0,308.52,2022.52,invoices_output\invoice_000009.html
+000010,2025-02-01,Matilde Arco Jordán,053-40-3473,3100.33,558.06,3658.39,invoices_output\invoice_000010.html
+000011,2024-11-26,Carlota Salvà Bou,958-89-3741,3241.33,583.44,3824.77,invoices_output\invoice_000011.html
+000012,2025-05-29,Flora Frutos Diéguez,201-12-1773,2928.48,527.13,3455.61,invoices_output\invoice_000012.html
+000013,2024-12-14,Nicolás Giner Vilaplana,913-12-7156,7435.03,0.0,7435.03,invoices_output\invoice_000013.html
+000014,2025-09-29,José Luis Jose Miguel Franch Jimenez,248-58-0410,9149.29,1646.87,10796.16,invoices_output\invoice_000014.html
+000015,2025-06-26,Marcelino Cerdán Soto,269-35-5346,2339.04,280.68,2619.72,invoices_output\invoice_000015.html
+000016,2025-05-02,Florinda Salcedo Cueto,781-19-6819,3847.42,0.0,3847.42,invoices_output\invoice_000016.html
+000017,2025-10-14,Octavia Izaguirre García,059-47-2919,1469.54,264.52,1734.06,invoices_output\invoice_000017.html
+000018,2025-01-10,Néstor Font Tapia,338-78-4537,6963.78,0.0,6963.78,invoices_output\invoice_000018.html
+000019,2025-10-15,Cipriano Landa Bellido,730-88-5254,3587.09,430.45,4017.54,invoices_output\invoice_000019.html
+000020,2025-07-12,Efraín Jose Antonio Fuente Ferrán,513-43-3921,1978.2199999999998,0.0,1978.22,invoices_output\invoice_000020.html
+000021,2025-05-15,Rubén René Jove Ruano,934-18-1444,4568.37,822.31,5390.68,invoices_output\invoice_000021.html
+000022,2025-09-17,Victor del Aragón,719-03-4058,2962.91,533.32,3496.23,invoices_output\invoice_000022.html
+000023,2025-11-18,Inmaculada Quintana,058-65-9472,5827.71,0.0,5827.71,invoices_output\invoice_000023.html
+000024,2025-06-10,Nazaret Esteve Bru,504-66-0152,6461.32,775.36,7236.68,invoices_output\invoice_000024.html
+000025,2025-01-06,Maxi Cabrero Estevez,077-76-3055,390.74,70.33,461.07,invoices_output\invoice_000025.html
+000026,2025-02-13,Bruno Vilar Torrent,423-50-3524,1842.26,331.61,2173.87,invoices_output\invoice_000026.html
+000027,2025-04-20,Amada Cintia Sotelo Casanovas,262-28-2398,1963.44,0.0,1963.44,invoices_output\invoice_000027.html
+000028,2025-06-26,Amor Arana Milla,847-01-3946,5118.6,0.0,5118.6,invoices_output\invoice_000028.html
+000029,2024-11-24,Verónica Torrens Martín,883-91-1888,4577.51,549.3,5126.81,invoices_output\invoice_000029.html
+000030,2025-06-07,Rico Vicente Portillo,704-35-1290,6956.1900000000005,0.0,6956.19,invoices_output\invoice_000030.html
+000031,2025-06-12,Priscila Brígida Francisco Navarro,471-05-4554,4625.219999999999,0.0,4625.22,invoices_output\invoice_000031.html
+000032,2025-06-26,Alfonso Tovar Fuente,839-27-6502,6244.17,749.3,6993.47,invoices_output\invoice_000032.html
+000033,2025-08-09,Pascuala Seco-Cadenas,187-26-0861,2041.5,367.47,2408.97,invoices_output\invoice_000033.html
+000034,2025-07-20,Ricardo Lorenzo,112-50-3969,3657.0,0.0,3657.0,invoices_output\invoice_000034.html
+000035,2025-10-11,Amaya Tejedor Perelló,565-72-2982,4751.12,0.0,4751.12,invoices_output\invoice_000035.html
+000036,2025-01-17,Ángel Gárate Calderón,144-81-3906,2620.59,0.0,2620.59,invoices_output\invoice_000036.html
+000037,2024-12-04,Edu Cruz Bonilla,716-25-0383,1107.44,0.0,1107.44,invoices_output\invoice_000037.html
+000038,2025-03-14,Flavio Plinio Mercader Canet,606-75-7754,4126.21,0.0,4126.21,invoices_output\invoice_000038.html
+000039,2024-11-26,Angelina Oliveras Sanchez,391-73-1205,9369.64,1686.54,11056.18,invoices_output\invoice_000039.html
+000040,2025-08-11,Toribio Bermejo Escobar,196-62-3206,2794.57,0.0,2794.57,invoices_output\invoice_000040.html
+000041,2025-09-15,Jose Ignacio de Doménech,799-90-2126,3355.0699999999997,603.91,3958.98,invoices_output\invoice_000041.html
+000042,2025-03-24,Emiliana Grau Garrido,834-18-7189,1086.98,0.0,1086.98,invoices_output\invoice_000042.html
+000043,2025-05-02,Glauco Nogués Tejera,376-50-7704,2908.7099999999996,349.05,3257.76,invoices_output\invoice_000043.html
+000044,2025-10-29,Amando Heras Navas,259-85-4320,826.9300000000001,0.0,826.93,invoices_output\invoice_000044.html
+000045,2025-01-13,Haroldo Porta Grande,258-92-1017,7173.43,1291.22,8464.65,invoices_output\invoice_000045.html
+000046,2025-08-18,Rosendo Emigdio Alegre Calvo,537-98-1750,4613.139999999999,830.37,5443.51,invoices_output\invoice_000046.html
+000047,2025-07-21,Mariano Buenaventura Ramón Rueda,415-20-8358,1262.32,151.48,1413.8,invoices_output\invoice_000047.html
+000048,2024-11-29,Baldomero Carvajal Ramón,571-42-3101,716.05,85.93,801.98,invoices_output\invoice_000048.html
+000049,2025-04-19,Ale Gala Arias Fernández,793-24-0019,169.02,0.0,169.02,invoices_output\invoice_000049.html
+000050,2025-07-08,María Dolores Plana Sevilla,154-73-9259,6693.21,0.0,6693.21,invoices_output\invoice_000050.html
+000051,2024-11-21,Dulce Nuñez Valero,423-58-6466,1270.9,0.0,1270.9,invoices_output\invoice_000051.html
+000052,2025-10-13,Paz Herminia Mariño Garcés,948-20-0572,4747.21,569.67,5316.88,invoices_output\invoice_000052.html
+000053,2025-02-22,Pánfilo del Calzada,785-92-1553,4317.25,518.07,4835.32,invoices_output\invoice_000053.html
+000054,2025-05-30,Ciríaco Palomino Trujillo,359-25-5234,3832.79,459.93,4292.72,invoices_output\invoice_000054.html
+000055,2025-01-09,Cecilia Roura Cámara,076-72-1452,8405.130000000001,1008.62,9413.75,invoices_output\invoice_000055.html
+000056,2025-01-04,Ibán Raya Lara,798-04-5549,1382.61,248.87,1631.48,invoices_output\invoice_000056.html
+000057,2025-05-13,Aristides del Palomares,938-60-4698,846.81,152.43,999.24,invoices_output\invoice_000057.html
+000058,2025-01-04,Valerio Acosta-Santamaría,047-74-8274,4400.610000000001,528.07,4928.68,invoices_output\invoice_000058.html
+000059,2025-03-16,Ruy Bernad Rius,414-41-5532,3275.81,393.1,3668.91,invoices_output\invoice_000059.html
+000060,2024-12-14,Nilda Oliveras,065-18-3112,1736.95,0.0,1736.95,invoices_output\invoice_000060.html
+000061,2025-11-09,Chelo de Álvaro,450-09-5087,6219.68,1119.54,7339.22,invoices_output\invoice_000061.html
+000062,2025-07-06,Prudencia Juliana Cañizares Pedro,992-01-8660,6526.67,1174.8,7701.47,invoices_output\invoice_000062.html
+000063,2025-09-16,Nando Bernat Tello,220-39-9695,560.28,0.0,560.28,invoices_output\invoice_000063.html
+000064,2025-10-01,Aurelio Pineda Cózar,399-55-5929,1702.47,306.44,2008.91,invoices_output\invoice_000064.html
+000065,2025-06-28,Guadalupe Pozuelo,735-26-8409,6752.58,1215.46,7968.04,invoices_output\invoice_000065.html
+000066,2024-11-29,Adelina Carbó-Avilés,841-31-3474,2643.1900000000005,475.77,3118.96,invoices_output\invoice_000066.html
+000067,2025-11-14,Petrona Montaña Pozo,758-41-0397,4492.84,539.14,5031.98,invoices_output\invoice_000067.html
+000068,2025-03-06,Milagros Angelina Agudo Quesada,716-83-0959,4700.29,0.0,4700.29,invoices_output\invoice_000068.html
+000069,2025-06-05,Eulalia Dalmau Valentín,938-21-2031,5206.81,937.23,6144.04,invoices_output\invoice_000069.html
+000070,2025-03-19,Luz Graciela Mena Trujillo,624-23-5922,8416.11,0.0,8416.11,invoices_output\invoice_000070.html
+000071,2025-10-15,Eusebia Dominguez Chaparro,651-40-4866,2408.78,0.0,2408.78,invoices_output\invoice_000071.html
+000072,2025-06-25,Ángel Toño Moll Prado,680-07-3781,5039.39,604.73,5644.12,invoices_output\invoice_000072.html
+000073,2024-12-31,Zoraida Cabrero Azorin,996-33-5316,3643.25,0.0,3643.25,invoices_output\invoice_000073.html
+000074,2025-07-19,Cruz Galán,943-26-5729,3651.16,0.0,3651.16,invoices_output\invoice_000074.html
+000075,2025-05-28,Saturnino Ribas Polo,309-98-3487,3069.61,552.53,3622.14,invoices_output\invoice_000075.html
+000076,2025-09-27,Pancho Aranda Feliu,565-25-9896,1845.6799999999998,0.0,1845.68,invoices_output\invoice_000076.html
+000077,2025-01-10,Viviana Ros Colom,962-79-0824,5836.53,0.0,5836.53,invoices_output\invoice_000077.html
+000078,2025-01-10,Efraín Amador Granados,924-92-3457,5825.42,699.05,6524.47,invoices_output\invoice_000078.html
+000079,2025-04-06,Carolina Simó-Salinas,351-45-4948,3689.9900000000002,664.2,4354.19,invoices_output\invoice_000079.html
+000080,2024-11-29,Consuelo Elías Pou,625-45-6934,10411.18,0.0,10411.18,invoices_output\invoice_000080.html
+000081,2025-08-02,Xiomara Roselló Adadia,950-38-4409,6596.75,0.0,6596.75,invoices_output\invoice_000081.html
+000082,2025-03-31,Manuel Fabián Anaya Lozano,348-35-9203,1213.9499999999998,218.51,1432.46,invoices_output\invoice_000082.html
+000083,2025-08-27,Albina Ramis Pina,054-51-4492,1816.3,217.96,2034.26,invoices_output\invoice_000083.html
+000084,2024-11-28,Silvio Esteban Meléndez,167-07-4670,4417.950000000001,795.23,5213.18,invoices_output\invoice_000084.html
+000085,2025-06-05,Amando Blasco Cuesta,952-75-2338,5096.32,0.0,5096.32,invoices_output\invoice_000085.html
+000086,2025-08-02,Esperanza Abad,969-14-3432,1575.94,189.11,1765.05,invoices_output\invoice_000086.html
+000087,2024-12-20,Rosalía Riera Vazquez,945-02-2920,1533.52,184.02,1717.54,invoices_output\invoice_000087.html
+000088,2025-01-31,Paz del Vaquero,744-30-4632,7955.4400000000005,954.65,8910.09,invoices_output\invoice_000088.html
+000089,2025-03-15,Estrella Porta Moraleda,345-93-2851,8206.98,984.84,9191.82,invoices_output\invoice_000089.html
+000090,2025-06-03,Lázaro Olivé Bonet,870-88-0744,6610.72,1189.93,7800.65,invoices_output\invoice_000090.html
+000091,2025-09-20,Eusebia Villanueva Mateo,781-34-3978,5936.720000000001,0.0,5936.72,invoices_output\invoice_000091.html
+000092,2025-09-23,Salomón Arnal Monreal,972-93-9630,4199.34,0.0,4199.34,invoices_output\invoice_000092.html
+000093,2024-12-20,Lilia Peña Blasco,316-75-4523,11593.54,0.0,11593.54,invoices_output\invoice_000093.html
+000094,2025-06-06,Leire Saavedra Agudo,297-11-9456,8818.11,1587.26,10405.37,invoices_output\invoice_000094.html
+000095,2025-08-28,Teodoro Robledo Tirado,067-05-0681,5854.11,702.49,6556.6,invoices_output\invoice_000095.html
+000096,2025-08-09,Sosimo Mora Vigil,159-44-9906,1316.97,0.0,1316.97,invoices_output\invoice_000096.html
+000097,2025-10-18,León Guardia Benavides,651-40-8859,7363.94,0.0,7363.94,invoices_output\invoice_000097.html
+000098,2025-08-01,Emilia Checa Blanca,275-25-3017,3908.58,469.03,4377.61,invoices_output\invoice_000098.html
+000099,2025-01-11,Fidel Soriano Valcárcel,217-21-6797,3582.38,0.0,3582.38,invoices_output\invoice_000099.html
+000100,2025-05-11,Perlita Guzman,622-23-8079,5604.96,1008.89,6613.85,invoices_output\invoice_000100.html
+000101,2024-11-19,Tomasa Castilla Castellanos,707-23-8468,8402.48,1008.3,9410.78,invoices_output\invoice_000101.html
+000102,2025-04-01,Ramiro Valentín Oller,206-08-3577,3694.37,0.0,3694.37,invoices_output\invoice_000102.html
+000103,2024-11-19,Severino Rico Pellicer,161-31-7759,4088.5,735.93,4824.43,invoices_output\invoice_000103.html
+000104,2025-08-01,Jessica Bermudez,146-32-2919,3389.13,406.7,3795.83,invoices_output\invoice_000104.html
+000105,2025-01-15,Fulgencio Guardiola Mosquera,154-86-6712,3843.9300000000003,691.91,4535.84,invoices_output\invoice_000105.html
+000106,2025-08-19,Florinda Baquero Heras,880-18-6907,2528.48,0.0,2528.48,invoices_output\invoice_000106.html
+000107,2025-03-01,Serafina de Merino,967-25-0015,2664.32,479.58,3143.9,invoices_output\invoice_000107.html
+000108,2025-01-22,María Pilar Dorita Santamaría Portero,203-52-1604,1613.1,193.57,1806.67,invoices_output\invoice_000108.html
+000109,2025-02-21,Dorita Angulo Aliaga,000-88-6286,145.28,0.0,145.28,invoices_output\invoice_000109.html
+000110,2025-08-17,Rosenda Lidia Córdoba Llabrés,832-86-9577,7130.84,0.0,7130.84,invoices_output\invoice_000110.html
+000111,2025-09-10,Lupe Vera Rubio,010-19-4081,6454.26,774.51,7228.77,invoices_output\invoice_000111.html
+000112,2025-06-01,Manolo Menéndez Caro,887-05-6636,8420.23,0.0,8420.23,invoices_output\invoice_000112.html
+000113,2025-08-27,Cornelio de Laguna,839-63-9092,2752.08,330.25,3082.33,invoices_output\invoice_000113.html
+000114,2025-11-17,Palmira Morillo-Núñez,371-91-0202,3275.21,393.03,3668.24,invoices_output\invoice_000114.html
+000115,2025-10-18,Yolanda de Andrés,157-08-8587,7779.25,933.51,8712.76,invoices_output\invoice_000115.html
+000116,2025-07-05,Begoña del Carranza,077-79-1773,8653.599999999999,1038.43,9692.03,invoices_output\invoice_000116.html
+000117,2025-04-27,Pancho Izquierdo Sotelo,280-35-9112,843.8,0.0,843.8,invoices_output\invoice_000117.html
+000118,2024-12-30,María Fernanda Amorós Valenciano,915-56-6079,6131.2,1103.62,7234.82,invoices_output\invoice_000118.html
+000119,2025-04-13,Mamen Camps,631-11-3364,234.2,0.0,234.2,invoices_output\invoice_000119.html
+000120,2025-02-24,Federico Llorens Cerezo,254-94-5868,6001.0199999999995,1080.18,7081.2,invoices_output\invoice_000120.html
+000121,2025-10-07,Jose Angel Efraín Pereira Espinosa,327-50-9709,1494.96,0.0,1494.96,invoices_output\invoice_000121.html
+000122,2025-09-20,Dalila Araujo Vélez,927-77-9482,1704.26,0.0,1704.26,invoices_output\invoice_000122.html
+000123,2025-05-06,Ana Benavides,906-20-0031,3209.45,577.7,3787.15,invoices_output\invoice_000123.html
+000124,2025-10-02,Ulises Nicolás Ayuso,124-00-4296,3023.0299999999997,0.0,3023.03,invoices_output\invoice_000124.html
+000125,2024-12-13,José Ángel Somoza Taboada,076-47-1998,3041.15,364.94,3406.09,invoices_output\invoice_000125.html
+000126,2025-04-01,Candelaria del Soto,501-39-4019,675.84,121.65,797.49,invoices_output\invoice_000126.html
+000127,2025-11-08,Urbano Tovar Noguera,231-57-9672,4296.88,515.63,4812.51,invoices_output\invoice_000127.html
+000128,2025-06-14,Sarita Dueñas Ordóñez,420-88-6966,8335.23,1500.34,9835.57,invoices_output\invoice_000128.html
+000129,2025-03-31,Noelia Emma Menendez Murcia,370-84-4876,2075.68,373.62,2449.3,invoices_output\invoice_000129.html
+000130,2024-12-18,Florencio del Rocamora,320-20-1956,7373.72,1327.27,8700.99,invoices_output\invoice_000130.html
+000131,2025-04-24,Gilberto Llorente,294-74-6448,2878.92,345.47,3224.39,invoices_output\invoice_000131.html
+000132,2025-07-09,Cipriano de Belmonte,936-15-2199,3678.8500000000004,0.0,3678.85,invoices_output\invoice_000132.html
+000133,2025-03-06,Cecilio Leoncio Solano Montesinos,182-08-3169,2953.5,0.0,2953.5,invoices_output\invoice_000133.html
+000134,2025-03-29,Poncio Reig Bustamante,783-25-6480,4237.6,762.77,5000.37,invoices_output\invoice_000134.html
+000135,2025-10-15,Olegario Sainz Marti,224-49-3294,2505.56,0.0,2505.56,invoices_output\invoice_000135.html
+000136,2025-07-21,Maximiliano Andrés Díaz,130-99-3501,3412.0,409.44,3821.44,invoices_output\invoice_000136.html
+000137,2025-11-02,Olimpia Valenciano Gonzalo,380-99-6522,1080.99,0.0,1080.99,invoices_output\invoice_000137.html
+000138,2025-04-05,Jacinta Valera Ayuso,869-74-3500,1484.8799999999999,178.19,1663.07,invoices_output\invoice_000138.html
+000139,2025-01-02,Martin Amor Diaz Pelayo,104-51-1211,4258.59,0.0,4258.59,invoices_output\invoice_000139.html
+000140,2025-01-07,León Macias Mendez,737-95-3231,1875.52,0.0,1875.52,invoices_output\invoice_000140.html
+000141,2025-07-05,Carmen Saavedra Fernandez,657-03-2005,1556.04,280.09,1836.13,invoices_output\invoice_000141.html
+000142,2025-09-12,Fidel Baquero Vigil,508-33-6842,1879.97,0.0,1879.97,invoices_output\invoice_000142.html
+000143,2025-02-13,Juan José del Lluch,888-05-8944,4406.19,528.74,4934.93,invoices_output\invoice_000143.html
+000144,2025-01-31,Renata Esteban-Iglesias,624-51-4765,6130.0,1103.4,7233.4,invoices_output\invoice_000144.html
+000145,2024-12-26,Felicidad Canals Velázquez,642-98-9803,3828.45,0.0,3828.45,invoices_output\invoice_000145.html
+000146,2025-02-08,Feliciano Jimenez Roca,607-60-3837,7890.41,0.0,7890.41,invoices_output\invoice_000146.html
+000147,2025-10-23,Griselda Narváez-Cadenas,384-23-8073,8123.240000000001,974.79,9098.03,invoices_output\invoice_000147.html
+000148,2025-02-28,Jordi Cortés Navarrete,656-34-4423,5043.5,605.22,5648.72,invoices_output\invoice_000148.html
+000149,2025-02-05,Paloma Florina Oller Figueroa,102-98-9828,5811.47,0.0,5811.47,invoices_output\invoice_000149.html
+000150,2025-08-27,Victoria Nieves Llano Cantero,871-75-7775,452.52,0.0,452.52,invoices_output\invoice_000150.html
+000151,2025-10-05,José Mari Gordillo Perera,772-62-0901,9127.42,1642.94,10770.36,invoices_output\invoice_000151.html
+000152,2025-02-16,Samuel Coronado,255-38-4874,5157.45,928.34,6085.79,invoices_output\invoice_000152.html
+000153,2025-01-24,Andrea Torres,177-29-2620,4770.11,0.0,4770.11,invoices_output\invoice_000153.html
+000154,2024-12-20,Coral Gual Adadia,790-99-7558,2939.37,352.72,3292.09,invoices_output\invoice_000154.html
+000155,2024-12-24,Asdrubal Pujadas Nogueira,682-28-1124,2432.77,0.0,2432.77,invoices_output\invoice_000155.html
+000156,2025-04-29,Casemiro Agustí,306-35-0743,5534.0599999999995,0.0,5534.06,invoices_output\invoice_000156.html
+000157,2025-04-07,Víctor Urrutia Canet,873-32-7657,1388.73,0.0,1388.73,invoices_output\invoice_000157.html
+000158,2025-07-02,Valero Puerta-Galvez,420-36-8428,5261.35,631.36,5892.71,invoices_output\invoice_000158.html
+000159,2024-11-28,Nicolasa Rocamora Benet,948-27-3049,10601.28,0.0,10601.28,invoices_output\invoice_000159.html
+000160,2025-06-08,Cipriano Juan Francisco Isern Echeverría,718-37-9971,5742.93,1033.73,6776.66,invoices_output\invoice_000160.html
+000161,2025-05-04,Macarena Vila Asensio,712-32-9250,4767.81,0.0,4767.81,invoices_output\invoice_000161.html
+000162,2025-08-12,Jerónimo Fernández,550-15-7364,4545.2,0.0,4545.2,invoices_output\invoice_000162.html
+000163,2025-04-29,Natanael Pi Arribas,149-46-9512,3903.49,468.42,4371.91,invoices_output\invoice_000163.html
+000164,2024-12-31,Julieta Azorin Duque,256-35-2398,2550.8900000000003,459.16,3010.05,invoices_output\invoice_000164.html
+000165,2025-09-16,Sonia Quero-Aragón,224-49-8179,4866.25,0.0,4866.25,invoices_output\invoice_000165.html
+000166,2025-02-22,América Salom Borrego,719-58-4588,4673.8,0.0,4673.8,invoices_output\invoice_000166.html
+000167,2025-05-30,Felicidad Hernando Pulido,874-11-1713,2070.7,372.73,2443.43,invoices_output\invoice_000167.html
+000168,2025-07-03,Ramiro Ávila Reyes,826-35-1673,3678.63,0.0,3678.63,invoices_output\invoice_000168.html
+000169,2024-11-20,Ceferino Benitez Manzano,520-58-5372,1593.16,191.18,1784.34,invoices_output\invoice_000169.html
+000170,2025-01-22,Manu Exposito Olivares,844-89-2283,6429.74,1157.35,7587.09,invoices_output\invoice_000170.html
+000171,2025-06-18,Rosalva Gálvez Hervia,203-66-8334,4798.84,0.0,4798.84,invoices_output\invoice_000171.html
+000172,2025-02-04,Adolfo Priego,382-63-9747,11004.970000000001,0.0,11004.97,invoices_output\invoice_000172.html
+000173,2025-03-12,Milagros Salamanca Solís,448-83-6178,1687.8400000000001,0.0,1687.84,invoices_output\invoice_000173.html
+000174,2025-02-08,Pepito Llamas Avilés,789-66-2501,3507.44,631.34,4138.78,invoices_output\invoice_000174.html
+000175,2025-10-10,Heraclio Carnero-Meléndez,899-76-9626,2666.04,319.92,2985.96,invoices_output\invoice_000175.html
+000176,2025-01-06,Juan Antonio Boada Arco,945-12-8074,7234.259999999999,868.11,8102.37,invoices_output\invoice_000176.html
+000177,2025-09-30,Dalila Cazorla Pagès,556-14-6809,1953.7,351.67,2305.37,invoices_output\invoice_000177.html
+000178,2025-09-01,Herminio Rosado Vidal,188-00-5971,5784.92,1041.29,6826.21,invoices_output\invoice_000178.html
+000179,2025-09-20,Eusebio Carrión Orozco,335-37-7343,1061.28,191.03,1252.31,invoices_output\invoice_000179.html
+000180,2025-04-29,Román Carbajo,308-91-8848,6274.93,1129.49,7404.42,invoices_output\invoice_000180.html
+000181,2025-08-08,Severo Rico Higueras Alvarez,080-67-8848,3330.04,0.0,3330.04,invoices_output\invoice_000181.html
+000182,2025-08-17,Bautista Sergio Izaguirre Botella,395-46-9742,1614.4,290.59,1904.99,invoices_output\invoice_000182.html
+000183,2025-04-27,Juan Rivera Matas,978-38-6887,2666.0199999999995,0.0,2666.02,invoices_output\invoice_000183.html
+000184,2025-05-22,Édgar del Roma,150-56-2650,1625.19,0.0,1625.19,invoices_output\invoice_000184.html
+000185,2025-09-06,Adriana Abella-Tenorio,415-66-0604,1227.66,147.32,1374.98,invoices_output\invoice_000185.html
+000186,2025-05-27,Lola Uría Sáez,742-67-8736,407.81,73.41,481.22,invoices_output\invoice_000186.html
+000187,2025-04-03,Heliodoro Cózar Carnero,802-38-5927,2209.26,265.11,2474.37,invoices_output\invoice_000187.html
+000188,2024-11-24,Margarita Narváez Navas,567-82-5775,1327.88,0.0,1327.88,invoices_output\invoice_000188.html
+000189,2025-04-13,Martin Bernad Segura,764-95-0523,4876.88,0.0,4876.88,invoices_output\invoice_000189.html
+000190,2025-01-05,Régulo Aroca Iborra,329-83-5784,7203.03,0.0,7203.03,invoices_output\invoice_000190.html
+000191,2025-04-13,Corona Bernal,057-76-4343,5092.139999999999,0.0,5092.14,invoices_output\invoice_000191.html
+000192,2024-11-20,Alba Belda,861-39-0165,4740.7,568.88,5309.58,invoices_output\invoice_000192.html
+000193,2024-12-30,Tito Donoso Olivé,199-53-0764,7369.750000000001,0.0,7369.75,invoices_output\invoice_000193.html
+000194,2025-05-12,Lucía Rosselló Nogueira,413-29-6438,202.97,36.53,239.5,invoices_output\invoice_000194.html
+000195,2025-01-06,Adela Vaquero,592-81-7409,1563.96,187.68,1751.64,invoices_output\invoice_000195.html
+000196,2025-01-19,Mónica Puerta Marin,265-86-6471,1227.78,147.33,1375.11,invoices_output\invoice_000196.html
+000197,2025-01-29,Borja Marciano Grande Cánovas,757-07-5620,4371.71,524.61,4896.32,invoices_output\invoice_000197.html
+000198,2024-11-21,Gabriela Miguel Mariscal,417-95-1576,1689.42,0.0,1689.42,invoices_output\invoice_000198.html
+000199,2025-02-01,Dominga Expósito-Santiago,568-15-0321,755.97,0.0,755.97,invoices_output\invoice_000199.html
+000200,2025-08-05,Maxi Felicidad Alba Falcón,407-79-3545,2762.26,0.0,2762.26,invoices_output\invoice_000200.html
+000201,2025-10-12,Mamen Naranjo Font,225-72-3604,4932.76,0.0,4932.76,invoices_output\invoice_000201.html
+000202,2024-12-28,Amaya Yaiza Niño Carbó,197-39-7309,3587.67,430.52,4018.19,invoices_output\invoice_000202.html
+000203,2025-03-31,Eugenia Esteban Vélez,382-20-5296,4885.67,879.42,5765.09,invoices_output\invoice_000203.html
+000204,2025-01-16,Flavio Pavón Cabrero,286-84-8008,5814.39,1046.59,6860.98,invoices_output\invoice_000204.html
+000205,2025-05-29,Albert Moles-Urrutia,118-36-7559,3982.94,0.0,3982.94,invoices_output\invoice_000205.html
+000206,2025-07-12,José Antonio del Alba,775-27-2130,3981.9100000000003,0.0,3981.91,invoices_output\invoice_000206.html
+000207,2025-10-01,Jordán Vilaplana-Gallart,933-37-9456,1817.89,218.15,2036.04,invoices_output\invoice_000207.html
+000208,2025-07-18,Haroldo Guerrero,141-84-8012,2823.2200000000003,508.18,3331.4,invoices_output\invoice_000208.html
+000209,2025-11-04,Adalberto Marcio Arroyo Azorin,993-69-0721,6548.67,785.84,7334.51,invoices_output\invoice_000209.html
+000210,2025-05-17,Maxi Ferrán-Diaz,049-45-2973,972.3100000000001,116.68,1088.99,invoices_output\invoice_000210.html
+000211,2025-09-29,Elisabet Leal,374-34-2654,850.91,0.0,850.91,invoices_output\invoice_000211.html
+000212,2025-02-08,Alicia Agustí Toledo,496-31-9284,1598.4,287.71,1886.11,invoices_output\invoice_000212.html
+000213,2025-01-26,Hipólito Carrillo Alfaro,721-89-9665,7028.57,0.0,7028.57,invoices_output\invoice_000213.html
+000214,2024-12-12,Melisa Lucena Valbuena,993-55-4823,2569.42,0.0,2569.42,invoices_output\invoice_000214.html
+000215,2025-03-31,Juan José Peiró,590-37-6972,6191.200000000001,0.0,6191.2,invoices_output\invoice_000215.html
+000216,2025-02-18,Eloísa Adela Tejera Torrens,271-60-3656,5192.16,0.0,5192.16,invoices_output\invoice_000216.html
+000217,2025-09-10,Bernardino Seve Campo Cárdenas,486-98-4036,4057.79,486.93,4544.72,invoices_output\invoice_000217.html
+000218,2025-06-03,Eligio Agustín Llobet Olivera,496-98-7974,8101.7,0.0,8101.7,invoices_output\invoice_000218.html
+000219,2025-10-20,Adoración Pedraza-Perez,565-47-6255,10623.869999999999,1274.86,11898.73,invoices_output\invoice_000219.html
+000220,2024-12-06,Plinio Montes,366-77-7009,6850.42,0.0,6850.42,invoices_output\invoice_000220.html
+000221,2025-06-12,Cleto del Rubio,879-50-3923,1957.96,352.43,2310.39,invoices_output\invoice_000221.html
+000222,2025-04-09,Cándido Barón Baena,057-91-3175,801.56,0.0,801.56,invoices_output\invoice_000222.html
+000223,2025-03-12,Eutimio Maldonado Casal,865-03-1514,7549.15,1358.85,8908.0,invoices_output\invoice_000223.html
+000224,2025-03-18,Marcelo Villanueva Crespo,060-31-2385,5639.4800000000005,676.74,6316.22,invoices_output\invoice_000224.html
+000225,2025-04-03,Iris Ferrero Monreal,531-63-1240,9626.94,1732.85,11359.79,invoices_output\invoice_000225.html
+000226,2025-03-24,Apolinar Melchor Perera Cerezo,218-71-7409,2060.92,370.97,2431.89,invoices_output\invoice_000226.html
+000227,2025-08-12,Marita Morell Castelló,328-90-9577,9981.16,1197.74,11178.9,invoices_output\invoice_000227.html
+000228,2025-08-10,Sergio Carrillo,570-06-4503,5197.93,623.75,5821.68,invoices_output\invoice_000228.html
+000229,2024-12-03,Marcos Lasa Carro,910-11-2960,5336.46,640.38,5976.84,invoices_output\invoice_000229.html
+000230,2025-06-12,Gonzalo Bárcena Jove,110-55-4854,694.75,83.37,778.12,invoices_output\invoice_000230.html
+000231,2025-09-15,Ainoa Rosselló Saldaña,159-70-9321,5172.02,0.0,5172.02,invoices_output\invoice_000231.html
+000232,2024-12-01,Joaquín Carballo-Cortes,017-06-9649,8813.7,1057.64,9871.34,invoices_output\invoice_000232.html
+000233,2025-08-17,Aitana Goicoechea Cerezo,713-51-5173,3534.7700000000004,636.26,4171.03,invoices_output\invoice_000233.html
+000234,2024-12-22,Reyes Romero Guillén,644-34-5097,2876.9300000000003,517.85,3394.78,invoices_output\invoice_000234.html
+000235,2025-01-14,Nilo Checa Cornejo,235-39-3427,5535.84,664.3,6200.14,invoices_output\invoice_000235.html
+000236,2025-07-24,Débora del Saura,922-71-7649,5860.77,1054.94,6915.71,invoices_output\invoice_000236.html
+000237,2025-09-27,Jose Luis Paulino Cuervo Núñez,356-32-2426,5707.95,0.0,5707.95,invoices_output\invoice_000237.html
+000238,2025-03-03,Dalila Blanes Plaza,867-73-6119,8394.41,0.0,8394.41,invoices_output\invoice_000238.html
+000239,2024-12-01,Rosa María Almeida Arrieta,650-95-1791,10902.659999999998,1308.32,12210.98,invoices_output\invoice_000239.html
+000240,2025-04-30,Vilma Morán Machado,586-99-9246,3759.12,676.64,4435.76,invoices_output\invoice_000240.html
+000241,2025-07-05,Anunciación Bartolomé Villegas,092-06-7040,6152.0,0.0,6152.0,invoices_output\invoice_000241.html
+000242,2025-01-14,Manu Losa,061-49-3291,639.39,76.73,716.12,invoices_output\invoice_000242.html
+000243,2025-04-28,René del Amador,905-95-4157,113.84,20.49,134.33,invoices_output\invoice_000243.html
+000244,2025-03-29,Aroa Pont Azcona,781-28-6128,1341.81,161.02,1502.83,invoices_output\invoice_000244.html
+000245,2025-11-03,María Jesús Prado,920-12-6654,2146.3500000000004,386.34,2532.69,invoices_output\invoice_000245.html
+000246,2025-08-11,José Mari Sainz Perea,633-44-3759,2646.04,476.29,3122.33,invoices_output\invoice_000246.html
+000247,2025-01-15,Raquel Fiol Morales,580-55-6617,3086.89,555.64,3642.53,invoices_output\invoice_000247.html
+000248,2025-08-26,Natanael Salgado Briones,431-64-5873,888.57,159.94,1048.51,invoices_output\invoice_000248.html
+000249,2025-03-22,Maura Pera-Pablo,063-78-4728,1383.0700000000002,0.0,1383.07,invoices_output\invoice_000249.html
+000250,2025-03-02,Felicia del Mateos,089-27-2017,4533.049999999999,815.95,5349.0,invoices_output\invoice_000250.html

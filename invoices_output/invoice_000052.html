@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000052</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800171232</div>
+      <div>Camino Ignacio Bravo 6, Córdoba, 35961</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000052</strong></div>
+      <div>Fecha: 2025-10-13</div>
+      <div>Método de pago: Crédito</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Paz Herminia Mariño Garcés</div>
+    <div>NIT/CI: 948-20-0572</div>
+    <div>Ronda de Socorro Bou 941, Huelva, 22749</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td>Pequeño general jóvenes.</td><td class='right'>106,58</td><td class='right'>1.065,80</td></tr><tr><td>8</td><td>Sean vio nuevas hecho igual.</td><td class='right'>371,92</td><td class='right'>2.975,36</td></tr><tr><td>9</td><td>Comisión tú fuego.</td><td class='right'>78,45</td><td class='right'>706,05</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">4.747,21</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (12%)</td>
+        <td class="right">569,67</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>5.316,88</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

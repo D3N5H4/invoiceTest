@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000094</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800958749</div>
+      <div>Glorieta de Máximo Bueno 5 Apt. 09 , Guadalajara, 09199</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000094</strong></div>
+      <div>Fecha: 2025-06-06</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Leire Saavedra Agudo</div>
+    <div>NIT/CI: 297-11-9456</div>
+    <div>Plaza de Raimundo Camino 95, Huesca, 39579</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>9</td><td>Apenas buscar opinión realizar.</td><td class='right'>307,22</td><td class='right'>2.764,98</td></tr><tr><td>9</td><td>Servicios varios entre experiencia siglo.</td><td class='right'>225,43</td><td class='right'>2.028,87</td></tr><tr><td>8</td><td>Había lejos derecho vivir sólo.</td><td class='right'>59,17</td><td class='right'>473,36</td></tr><tr><td>6</td><td>Operación luis mes ejemplo.</td><td class='right'>128,35</td><td class='right'>770,10</td></tr><tr><td>8</td><td>Total visita formas encuentra larga.</td><td class='right'>347,60</td><td class='right'>2.780,80</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">8.818,11</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (18%)</td>
+        <td class="right">1.587,26</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>10.405,37</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

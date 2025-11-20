@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000128</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800698335</div>
+      <div>Glorieta de Encarnita Parra 37 Apt. 51 , Palencia, 03598</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000128</strong></div>
+      <div>Fecha: 2025-06-14</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Sarita Dueñas Ordóñez</div>
+    <div>NIT/CI: 420-88-6966</div>
+    <div>Pasadizo de Quique Roda 47 Apt. 86 , Córdoba, 41958</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>4</td><td>Televisión sea ahora rey eran felipe.</td><td class='right'>327,55</td><td class='right'>1.310,20</td></tr><tr><td>9</td><td>Fue presencia destino crecimiento tomar los.</td><td class='right'>253,54</td><td class='right'>2.281,86</td></tr><tr><td>10</td><td>Larga local unidos aquella le como.</td><td class='right'>210,51</td><td class='right'>2.105,10</td></tr><tr><td>5</td><td>Cambios izquierda banco derecho.</td><td class='right'>449,72</td><td class='right'>2.248,60</td></tr><tr><td>1</td><td>Igual minutos dos.</td><td class='right'>389,47</td><td class='right'>389,47</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">8.335,23</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (18%)</td>
+        <td class="right">1.500,34</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>9.835,57</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000209</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800482076</div>
+      <div>Urbanización Cornelio Soriano 47, Ciudad, 04083</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000209</strong></div>
+      <div>Fecha: 2025-11-04</div>
+      <div>Método de pago: Transferencia</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Adalberto Marcio Arroyo Azorin</div>
+    <div>NIT/CI: 993-69-0721</div>
+    <div>Acceso Nicolás Montaña 56 Piso 9 , Vizcaya, 46470</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>6</td><td>Hay nada había.</td><td class='right'>236,14</td><td class='right'>1.416,84</td></tr><tr><td>4</td><td>Pedro precisamente imposible diversos buscar.</td><td class='right'>228,98</td><td class='right'>915,92</td></tr><tr><td>6</td><td>Van pasar asociación niveles ciento.</td><td class='right'>399,29</td><td class='right'>2.395,74</td></tr><tr><td>7</td><td>Habían título justicia civil todavía gobierno.</td><td class='right'>194,17</td><td class='right'>1.359,19</td></tr><tr><td>1</td><td>Grande cualquier secretario.</td><td class='right'>460,98</td><td class='right'>460,98</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">6.548,67</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (12%)</td>
+        <td class="right">785,84</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>7.334,51</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>

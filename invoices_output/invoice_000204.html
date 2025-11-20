@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Factura #000204</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      color: #222
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .company {
+      font-weight: 700
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left
+    }
+
+    th {
+      background: #f4f4f4
+    }
+
+    .right {
+      text-align: right
+    }
+
+    .total {
+      font-weight: 700
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #555
+    }
+
+    .container{
+      outline: 1px solid #222;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <header>
+    <div>
+      <div class="company">ACME Pruebas S.R.L.</div>
+      <div>NIT: 800458507</div>
+      <div>Pasadizo de Petrona Baquero 70, Vizcaya, 43222</div>
+    </div>
+    <div>
+      <div>Factura Nº <strong>000204</strong></div>
+      <div>Fecha: 2025-01-16</div>
+      <div>Método de pago: Crédito</div>
+    </div>
+  </header>
+
+  <section style="margin-top:20px">
+    <strong>Cliente</strong>
+    <div>Flavio Pavón Cabrero</div>
+    <div>NIT/CI: 286-84-8008</div>
+    <div>Calle de Mirta Téllez 456, Girona, 13479</div>
+  </section>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Precio unitario</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>2</td><td>Dolor lugar sí ellas.</td><td class='right'>265,41</td><td class='right'>530,82</td></tr><tr><td>3</td><td>Flores igual máximo quiere tiempos.</td><td class='right'>217,43</td><td class='right'>652,29</td></tr><tr><td>4</td><td>Desarrollo debe central dado tendrá.</td><td class='right'>306,80</td><td class='right'>1.227,20</td></tr><tr><td>4</td><td>Posible ante manos uno después tengo diversos.</td><td class='right'>494,80</td><td class='right'>1.979,20</td></tr><tr><td>6</td><td>Muchas mano cuba.</td><td class='right'>237,48</td><td class='right'>1.424,88</td></tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3" class="right">SUBTOTAL</td>
+        <td class="right">5.814,39</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right">IMPUESTO (18%)</td>
+        <td class="right">1.046,59</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="right total">TOTAL</td>
+        <td class="right total"><strong>6.860,98</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    <div>Nota: Documento sin validez fiscal. Uso exclusivamente académico / pruebas.</div>
+  </footer>
+</div>
+
+</body>
+
+</html>
